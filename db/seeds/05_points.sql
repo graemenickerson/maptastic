@@ -1,5 +1,5 @@
 
--- keywords.sql table seeds here (Example)
+-- points.sql table seeds here (Example)
 
 INSERT INTO points (map_id, title, description, picture, lat, long, category)
 VALUES
