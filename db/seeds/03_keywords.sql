@@ -11,5 +11,5 @@ VALUES
 ('Historical Site'),
 ('Viewpoint'),
 ('Shopping'),
-('Attraction')
+('Attraction'),
 ('Kid Friendly');

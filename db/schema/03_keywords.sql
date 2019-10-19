@@ -4,5 +4,5 @@ DROP TABLE IF EXISTS keywords CASCADE;
 
 CREATE TABLE keywords (
   id SERIAL PRIMARY KEY,
-  word VARCHAR()
+  word VARCHAR(30)
 );
