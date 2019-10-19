@@ -50,6 +50,11 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+app.get("/map", (req,res) => {
+  res.render("../views/map")
+})
+
+
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
