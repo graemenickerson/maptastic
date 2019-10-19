@@ -3,7 +3,6 @@
 .main-map {
   display: flex;
   flex-direction: row;
-  background-color: purple;
   justify-content: space-evenly;
   align-items: center;
   height: 100vh;
@@ -12,9 +11,9 @@
     width: 25%;
     background-color: gray;
   }
-  .map {
+  #mapid {
     height: 100%;
+    min-height: 180px;
     width: 75%;
-    background-color: blue;
   }
 }
