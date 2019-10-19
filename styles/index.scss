@@ -1,0 +1,22 @@
+// See: https://sass-lang.com/
+
+body {
+  background-color: #EEE;
+  h1 {
+    color: #244751;
+  }
+}
+
+div.map-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+div.map-thumbnail {
+  background-image: url('../images/map.jpg');
+  // background-color: pink;
+  height: 200px;
+  width: 200px;
+  background-size: 200px 200px;
+}
