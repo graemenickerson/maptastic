@@ -40,6 +40,7 @@ const usersRoutes = require("./routes/users");
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
 app.use('/map', require("./routes/map"));
+app.use('/register', require("./routes/register"))
 // Note: mount other resources here, using the same pattern above
 
 
