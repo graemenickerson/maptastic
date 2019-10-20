@@ -3,7 +3,7 @@
 
 <nav id="nav-bar">
   <span>MAPPIN</span>
-    <% if (true) { %>
+    <% if (false) { %>
       <div>
         <button id="createMap">Create New Map</button>
         <button id="logout">View Maps</button>
@@ -11,7 +11,18 @@
         <button id="logout">Logout</button>
       </div>
     <%} else {%>
-      <button id='login'>Register</button>
+      <div id="not-logged-in">
+        <form action="/login" method="POST">
+          <div>
+            <label for="email">Enter Login:</label>
+            <input class="login-form" type="text" name="email" placeholder="user@example.com">
+            <input class="login-form" type="text" name="password" placeholder="password">
+            <button type="submit">Login</button>
+          </div>
+        </form>
+        <h2 style="color: white"> | </h2>
+        <button id='login'>Register</button>
+    </div>
     <%}%>
 </nav>
 
