@@ -36,6 +36,13 @@ $text-secondary: #545149;
   }
 }
 
+#logged-in {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: center;
+}
+
 #not-logged-in {
   display: flex;
   flex-direction: row;
