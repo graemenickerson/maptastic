@@ -27,14 +27,5 @@ module.exports = (db) => {
 
 };
 
-// .then(data => {
-//   console.log(data.rows);
-//   const users = data.rows;
-//   res.json({ users });
-// })
-// // console.log(users);
-// for(user of users.users) {
-//   $("<div>").text(user.name).appendTo($("body"));
-// }
 
 
