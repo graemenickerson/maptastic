@@ -8,9 +8,33 @@
 const express = require('express');
 const router  = express.Router();
 
+module.exports = (db) => {
 
-router.get("/", (req,res) => {
+  router.get("/", (req,res) => {
     res.render("../views/map")
   });
 
-  module.exports = router;
+  router.get("/id", (req, res) => {
+    db.query(`
+    SELECT * FROM points`)
+    .then(data => {
+      const points = data.rows;
+      res.json({points});
+    })
+  });
+
+  return router;
+
+};
+
+// .then(data => {
+//   console.log(data.rows);
+//   const users = data.rows;
+//   res.json({ users });
+// })
+// // console.log(users);
+// for(user of users.users) {
+//   $("<div>").text(user.name).appendTo($("body"));
+// }
+
+

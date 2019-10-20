@@ -1,10 +1,12 @@
 $(() => {
   $.ajax({
     method: "GET",
-    url: "/api/users"
-  }).done((users) => {
-    for(user of users.users) {
-      $("<div>").text(user.name).appendTo($("body"));
+    url: "/map/id"
+  }).done((points) => {
+    for(point of points.points) {
+      L.marker({lat: `${point.lat}`, lng: `${point.long}`}).addTo(map);
     }
-  });;
+  });
 });
+
+

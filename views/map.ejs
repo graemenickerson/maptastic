@@ -18,6 +18,10 @@
     integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
     crossorigin=""></script>
 
+
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
+
   </head>
   <body>
     <% include ./partials/_nav %>
@@ -27,7 +31,7 @@
         BLAH BLAH
         </div>
         <div id="mapid">
-          <script>
+          <script id="map-script">
             let map = L.map('mapid').setView([48.440200, -123.360000], 13);
 
             L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
@@ -42,6 +46,7 @@
               console.log(e.latlng);
               let marker = new L.marker(e.latlng).addTo(map);
             });
+
           </script>
         </div>
       </div>
