@@ -31,26 +31,47 @@ module.exports = (db) => {
       .catch((err) => {return null});
   };
 
+
+  const getUserByEmail = function(user) {
+    const value = [user.email];
+    const sqlStatment = `
+      SELECT * FROM users
+      WHERE email = $1;
+    `;
+    return db.query(sqlStatment, value)
+      .then(res => {
+        console.log(res.rows);
+
+        return res.rows;
+      })
+      .catch((err) => {return null});
+  }
+
   // Take new user info and stores it also assigns cookie
   router.post('/', (req, res) => {
-
     const user = req.body;
-    user.password = bcrypt.hashSync(user.password, 10);
-    console.log("here");
+    console.log(user.email);
 
-    addUser(user)
-      .then(user => {
-        console.log(user);
-        if (!user) {
-          res.send({error: "error"});
-          return;
+    getUserByEmail(user)
+      .then (exists => {
+        console.log(exists);
+
+        if (exists[0].email === user.email) {
+          // $('#error-message').visibility = visible;
+          console.log("user exists");
+          res.render('../views/register');
+        } else {
+          user.password = bcrypt.hashSync(user.password, 10);
+          addUser(user)
+            .then(user => {
+              req.session.userId = user.id;
+              res.render('../views/index');
+            })
+            .catch(error => res.send(error));
         }
-        req.session.userId = user.id;
-        res.redirect('index');
       })
-      .catch(error => res.send(error));
+      .catch(err => res.send(err));
   });
-
 
   return router;
 };
