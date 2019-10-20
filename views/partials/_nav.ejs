@@ -3,7 +3,7 @@
 
 <nav id="nav-bar">
   <span>MAPPIN</span>
-    <% if (true) { %>
+    <% if (typeof(user) === 'object') { %>
       <div>
         <button id="createMap">Create New Map</button>
         <button id="logout">View Maps</button>
@@ -11,7 +11,7 @@
         <button id="logout">Logout</button>
       </div>
     <%} else {%>
-      <button id='login'>Register</button>
+      <a href="/register" class="navItem">Register</a>
     <%}%>
 </nav>
 
