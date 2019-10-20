@@ -40,15 +40,13 @@ module.exports = (db) => {
 
     addUser(user)
       .then(user => {
+        console.log(user);
         if (!user) {
           res.send({error: "error"});
           return;
         }
-        console.log(user.id);
-
         req.session.userId = user.id;
-        let templateVars = { user: user.id };
-        res.redirect('index', templateVars);
+        res.redirect('index');
       })
       .catch(error => res.send(error));
   });
