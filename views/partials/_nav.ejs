@@ -3,12 +3,14 @@
 
 <nav id="nav-bar">
   <span>MAPPIN</span>
-    <% if (false) { %>
+    <% if (loggedInUser) { %>
       <div>
         <button id="createMap">Create New Map</button>
         <button id="logout">View Maps</button>
         <button id="myMaps">My Maps</button>
-        <button id="logout">Logout</button>
+        <form action="/logout" method="POST">
+          <button id="logout">Logout</button>
+        </form>
       </div>
     <%} else {%>
       <div id="not-logged-in">
