@@ -9,20 +9,47 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (db) => {
-  router.get("/", (req, res) => {
-    db.query(`SELECT * FROM users;`)
-      .then(data => {
-        console.log(data.rows);
-        const users = data.rows;
-        res.json({ users });
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
+
+  router.get("/", (req,res) => {
+    const templateVars = {
+      user: 0,
+    }
+    res.render("users", templateVars)
   });
 
+  router.get("/:id", (req, res) => {
+    db.query(`
+    SELECT * FROM users
+    WHERE users.id = $1
+    `, [req.params.id])
+    .then(data => {
+      res.json(data.rows[0])
+    })
+  })
 
   return router;
 };
+
+
+// const express = require('express');
+// const router  = express.Router();
+
+// module.exports = (db) => {
+//   router.get("/", (req, res) => {
+//     db.query(`SELECT * FROM users;`)
+//       .then(data => {
+//         console.log(data.rows);
+//         const users = data.rows;
+//         res.json({ users });
+//       })
+//       .catch(err => {
+//         res
+//           .status(500)
+//           .json({ error: err.message });
+//       });
+//   });
+
+
+//   return router;
+// };
+
