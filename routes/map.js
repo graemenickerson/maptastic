@@ -11,19 +11,27 @@ const router  = express.Router();
 module.exports = (db) => {
 
   router.get("/", (req,res) => {
-    const templateVars = {
-      loggedInUser: req.session.userId,
-      mapObj: 0
-    }
-    res.render("../views/map", templateVars)
+    db.query(`
+      SELECT name
+      FROM map_icons;
+    `)
+    .then(data => {
+      const templateVars = {
+        loggedInUser: req.session.userId,
+        mapObj: 0,
+        map_icons: data.rows
+      }
+      res.render("../views/map", templateVars)
+    })
+    .catch(err => console.log(err));
   });
 
 
   router.get("/:id", (req, res) => {
     db.query(`
-    SELECT maps.*, users.name
-    FROM maps JOIN users ON maps.owner_id = users.id
-    WHERE maps.id = $1
+      SELECT maps.*, users.name
+      FROM maps JOIN users ON maps.owner_id = users.id
+      WHERE maps.id = $1
     `, [req.params.id])
     .then(data => {
       const templateVars = {
