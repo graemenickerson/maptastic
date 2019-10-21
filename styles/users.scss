@@ -1,0 +1,25 @@
+body {
+  background-color: #EEE;
+  h1 {
+    color: #244751;
+  }
+  h3 {
+    color: #244751;
+  }
+}
+
+.made, .favourited, .contributed {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+
+  span {
+    margin-left: 50px;
+    background-image: url('../images/map.jpg');
+    color: black;
+    height: 200px;
+    width: 200px;
+    background-size: 200px 200px;
+  }
+}

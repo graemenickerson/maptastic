@@ -9,18 +9,22 @@ $(() => {
       method: "GET",
       url: `/users/${myId}/maps`
     }).done((userMaps) => {
-      $("span.myMapList").append("<h4>Maps I Made</h4>")
+
       for (const map of userMaps.myMaps) {
-        $("span.myMapList").append(`<a href= "/map/${map.id}">${map.title}</a>`);
+        $("div.made").append(`<span><a href= "/map/${map.id}">${map.title}</a></span>`);
       }
-      $("span.myMapList").append("<h4>Maps I Favourited</h4>")
-      for (const map of userMaps.myFaves) {
-        $("span.myMapList").append(`<a href= "/map/${map.id}">${map.title}</a>`);
-      }
-      $("span.myMapList").append("<h4>Maps I Contributed To</h4>")
+
       for (const map of userMaps.myContributions) {
-        $("span.myMapList").append(`<a href= "/map/${map.id}">${map.title}</a>`);
+        $("div.contributed").append(`<span><a href= "/map/${map.id}">${map.title}</a></span>`);
       }
+
+      for (const map of userMaps.myFaves) {
+        $("div.favourited").append(`<span><a href= "/map/${map.id}">${map.title}</a></span>`);
+      }
+
+
+
+
     });
   }
 });
