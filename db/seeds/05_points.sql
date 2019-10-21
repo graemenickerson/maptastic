@@ -1,7 +1,7 @@
 
 -- points.sql table seeds here (Example)
 
-INSERT INTO points (map_id, title, description, picture, lat, long, category)
+INSERT INTO points (map_id, title, description, picture, lat, long, keyword_id)
 VALUES
 (1, 'Lighthouse Labs', 'This is where you learn.', 'https://cdn5.vectorstock.com/i/1000x1000/59/39/simple-modern-hotel-building-vector-23075939.jpg', 48.440200, -123.360000, 1),
 (1, 'A restaurant', 'Go here, eat stuff!', 'http://texturelib.com/Textures/buildings/buildings/buildings_buildings_0085_01_preview.jpg', 48.435334, -123.358017, 2),
@@ -14,5 +14,5 @@ VALUES
 (4, 'Airport', 'The airport', 'https://upload.wikimedia.org/wikipedia/commons/5/59/Florence_-_Peretola_%28Amerigo_Vespucci%29_%28FLR_-_LIRQ%29_AN0591245.jpg', 43.80622396020984, 11.19856395149868,1),
 (4, 'museum', 'The museum', 'https://upload.wikimedia.org/wikipedia/commons/5/59/Florence_-_Peretola_%28Amerigo_Vespucci%29_%28FLR_-_LIRQ%29_AN0591245.jpg', 43.770387, 11.258254, 1),
 (4, 'Australia', 'Aussie, mate!', 'add a photo!', -29.280205150532606, 146.02240457651226, 1),
-(1, 'Cafe Fantastico', 'Good coffee', 'sadf', 48.43216516584064, -123.37835382740455, 1),
-(1, 'Cedar Hill Golf Course', 'Teddy likes to walk here!', 'will add photo later' , 48.4535641582925, -123.34557240070171, 1);
+(1, 'Cafe Fantastico', 'Good coffee', 'https://caffefantastico.com/wp-content/uploads/2015/11/DockSide65.jpg', 48.43216516584064, -123.37835382740455, 1),
+(1, 'Cedar Hill Golf Course', 'Teddy likes to walk here!', 'http://www.saanich.ca/assets/Parks~Recreation~and~Culture/Images/Recreation/Cedar~Hill~Golf~Course~and~clubhouse/slideshows/6-View-on-Fairway-at-CedarHill.jpg' , 48.4535641582925, -123.34557240070171, 1);
