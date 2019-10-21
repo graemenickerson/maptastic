@@ -20,8 +20,10 @@ $text-secondary: #545149;
   align-items: center;
   color: $text-primary;
   background-color: $primary-color;
-  span {
+  #brand {
     font-size: 1.5em;
+    text-decoration: none;
+    color: $text-primary;
   }
   button {
     background-color:transparent;

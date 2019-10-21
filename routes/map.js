@@ -32,6 +32,7 @@ module.exports = (db) => {
       }
       res.render("map", templateVars);
     })
+    .catch(err => console.log(err));
 
   })
 
@@ -43,6 +44,7 @@ module.exports = (db) => {
       const points = data.rows;
       res.json({points});
     })
+    .catch(err => console.log(err));
   });
   return router;
 };
