@@ -3,7 +3,8 @@ $(() => {
   let myURL = window.location.href.split("/");
   const myId = myURL[myURL.length -1];
 
-  if (myId) {
+  if (myId && myId !== 'map') {
+    console.log(myId);
     $.ajax({
       method: "GET",
       url: `/map/${myId}/points`
