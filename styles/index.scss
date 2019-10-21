@@ -11,6 +11,7 @@ div.map-row {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 div.map-thumbnail {
