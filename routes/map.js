@@ -14,11 +14,17 @@ module.exports = (db) => {
     res.render("../views/map")
   });
 
-  router.get("/id", (req, res) => {
+  router.get("/:id", (req, res) => {
+    res.render("map");
+  })
+
+  router.get("/:id/points", (req, res) => {
     db.query(`
-    SELECT * FROM points`)
+    SELECT * FROM points
+    WHERE map_id = ${req.params.id}`)
     .then(data => {
       const points = data.rows;
+      console.log(points);
       res.json({points});
     })
   });
@@ -26,6 +32,8 @@ module.exports = (db) => {
   return router;
 
 };
+
+
 
 
 

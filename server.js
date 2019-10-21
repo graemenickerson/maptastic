@@ -50,7 +50,16 @@ app.use('/register', require("./routes/register"))
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
-  res.render("index");
+  db.query(`
+  SELECT * FROM maps
+  ORDER BY date_created DESC;
+  `)
+  .then(data => {
+    const templateVars = {
+      mapsArr: data.rows
+    };
+    res.render("index", templateVars)
+  })
 });
 
 app.listen(PORT, () => {

@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="/styles/index.css" type="text/css" />
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
 
-
   </head>
 
   <body>
@@ -18,12 +17,12 @@
     <!-- <a href= '/map'><button type="submit" class="btn" >MAP</button></a> -->
 
     <div class = "map-row">
+      <% for(const map of mapsArr) {%>
       <div class = "map-thumbnail">
+        <h1><a href="map/<%= map.id %>"><%= map.title %></a></h1>
       </div>
-      <div class = "map-thumbnail">
-      </div>
-      <div class = "map-thumbnail">
-      </div>
+      <%}
+      %>
     </div>
 
   </body>
