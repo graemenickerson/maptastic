@@ -16,7 +16,15 @@ module.exports = (db) => {
 
   // Shows page for creating new user
   router.get("/", (req,res) => {
-      res.render("../views/register")
+    if (!req.session === undefined) {
+      console.log(req.session.userId)
+      const templateVars =  { loggedInUser: req.session.userId };
+      res.render("register", templateVars);
+    } else {
+      req.session.userId = null;
+      const templateVars =  { loggedInUser: req.session.userId };
+      res.render("register", templateVars);
+    }
     });
 
   const addUser = function(user) {
@@ -31,7 +39,6 @@ module.exports = (db) => {
       .catch((err) => {return null});
   };
 
-
   const getUserByEmail = function(user) {
     const value = [user.email];
     const sqlStatment = `
@@ -40,9 +47,7 @@ module.exports = (db) => {
     `;
     return db.query(sqlStatment, value)
       .then(res => {
-        console.log(res.rows);
-
-        return res.rows;
+        return res.rows[0];
       })
       .catch((err) => {return null});
   }
@@ -50,22 +55,16 @@ module.exports = (db) => {
   // Take new user info and stores it also assigns cookie
   router.post('/', (req, res) => {
     const user = req.body;
-    console.log(user.email);
-
     getUserByEmail(user)
       .then (exists => {
-        console.log(exists);
-
-        if (exists[0].email === user.email) {
-          // $('#error-message').visibility = visible;
-          console.log("user exists");
-          res.render('../views/register');
+        if (exists) {
+          res.redirect('register');
         } else {
           user.password = bcrypt.hashSync(user.password, 10);
           addUser(user)
             .then(user => {
               req.session.userId = user.id;
-              res.render('../views/index');
+              res.redirect('/');
             })
             .catch(error => res.send(error));
         }
