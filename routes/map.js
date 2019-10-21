@@ -19,13 +19,13 @@ module.exports = (db) => {
       const templateVars = {
         loggedInUser: req.session.userId,
         mapObj: 0,
-        map_icons: data.rows
+        map_icons: data.rows,
+        addPoint: 0
       }
       res.render("../views/map", templateVars)
     })
     .catch(err => console.log(err));
   });
-
 
   router.get("/:id", (req, res) => {
     db.query(`
@@ -36,7 +36,8 @@ module.exports = (db) => {
     .then(data => {
       const templateVars = {
         loggedInUser: req.session.userId,
-        mapObj: data.rows[0]
+        mapObj: data.rows[0],
+        addPoint: 0
       }
       res.render("map", templateVars);
     })
@@ -55,5 +56,25 @@ module.exports = (db) => {
     })
     .catch(err => console.log(err));
   });
+
+  router.get("/:id/addpoint", (req, res) => {
+    db.query(`
+    SELECT maps.*, users.name
+    FROM maps JOIN users ON maps.owner_id = users.id
+    WHERE maps.id = $1
+    `, [req.params.id])
+    .then(data => {
+      const templateVars = {
+        loggedInUser: req.session.userId,
+        mapObj: data.rows[0],
+        addPoint: 1
+      }
+      res.render("../views/map", templateVars)
+    })
+    .catch(err => console.log(err));
+  });
+
   return router;
 };
+
+
