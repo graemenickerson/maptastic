@@ -8,10 +8,3 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
   id: 'mapbox.streets'
 }).addTo(map);
 
-let marker = {}
-map.on('click', function (e) {
-  if (marker !== undefined){
-    map.removeLayer(marker);
-  }
-  marker = new L.marker(e.latlng).addTo(map);
-});

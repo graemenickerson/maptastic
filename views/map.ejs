@@ -40,5 +40,9 @@
   <script id="map-script" src='/scripts/map_leaflet.js'></script>
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
+
+  <% if(loggedInUser) { %>
+    <script type="text/javascript" src="/scripts/add_point.js"></script>
+  <% } %>
   </body>
 </html>
