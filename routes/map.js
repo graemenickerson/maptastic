@@ -12,7 +12,7 @@ module.exports = (db) => {
 
   router.get("/", (req,res) => {
     db.query(`
-      SELECT name
+      SELECT name, id
       FROM map_icons;
     `)
     .then(data => {
@@ -21,6 +21,7 @@ module.exports = (db) => {
         mapObj: 0,
         map_icons: data.rows
       }
+      console.log(data.rows)
       res.render("../views/map", templateVars)
     })
     .catch(err => console.log(err));
@@ -33,9 +34,10 @@ module.exports = (db) => {
       VALUES ($1, $2, NOW(), $3, $4)
       RETURNING *;
     `;
+    console.log(req.body.catRadio);
     db.query(sqlStatment,values)
       .then(returned => {
-        res.redirect(`map/${returned.rows[0].id}`);
+        res.redirect(`/map/${returned.rows[0].id}`);
       })
       .catch(err => console.log(err));
   });
