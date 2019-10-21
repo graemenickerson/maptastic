@@ -27,15 +27,15 @@ module.exports = (db) => {
   });
 
   router.post("/", (req,res) => {
-    const values = [req.session.userId, req.body.cat-radio, req.body.title, req.body.description];
+    const values = [req.session.userId, req.body.catRadio, req.body.title, req.body.description];
     const sqlStatment = `
       INSERT INTO maps (owner_id, icon_id, date_created, title, description)
       VALUES ($1, $2, NOW(), $3, $4)
       RETURNING *;
     `;
     db.query(sqlStatment,values)
-      .then(res => {
-        router.redirect(`map/${res.rows[0].id}`);
+      .then(returned => {
+        res.redirect(`map/${returned.rows[0].id}`);
       })
       .catch(err => console.log(err));
   });
