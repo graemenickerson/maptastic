@@ -11,11 +11,24 @@ const router  = express.Router();
 module.exports = (db) => {
 
   router.get("/", (req,res) => {
-    res.render("../views/map")
+    const templateVars = {
+      mapObj: 0
+    }
+    res.render("../views/map", templateVars)
   });
 
   router.get("/:id", (req, res) => {
-    res.render("map");
+    db.query(`
+    SELECT * FROM maps
+    WHERE id = ${req.params.id}
+    `)
+    .then(data => {
+      const templateVars = {
+        mapObj: data.rows[0]
+      }
+      res.render("map", templateVars);
+    })
+
   })
 
   router.get("/:id/points", (req, res) => {
@@ -24,16 +37,8 @@ module.exports = (db) => {
     WHERE map_id = ${req.params.id}`)
     .then(data => {
       const points = data.rows;
-      console.log(points);
       res.json({points});
     })
   });
-
   return router;
-
 };
-
-
-
-
-
