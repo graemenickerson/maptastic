@@ -1,16 +1,18 @@
 $(() => {
 
   let myURL = window.location.href.split("/");
-  const myId = myURL[myURL.length -1];
-
-  if (myId && myId !== 'map' && myId !== 'newpoint') {
-    console.log(myId);
+  let myId;
+  if (myURL[3] === 'map') {
+    myId = myURL[4];
+  }
+  if (myId && myId !== 'map' && myId !== 'addpoint') {
     $.ajax({
       method: "GET",
       url: `/map/${myId}/points`
     }).done((points) => {
       let markers = []
       for(point of points.points) {
+
         const point_icon = L.icon({
           iconUrl: point.img_loc,
           iconSize:     [40, 45], // size of the icon

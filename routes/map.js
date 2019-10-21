@@ -27,6 +27,24 @@ module.exports = (db) => {
     .catch(err => console.log(err));
   });
 
+  router.get("/:id/addpoint", (req, res) => {
+    db.query(`
+    SELECT * FROM points
+    JOIN keywords on points.keyword_id = keywords.id
+    WHERE map_id = $1
+    `, [req.params.id])
+    .then(data => {
+
+      const templateVars = {
+        loggedInUser: req.session.userId,
+        mapObj: data.rows[0],
+        addPoint: 1
+      }
+      res.render("map", templateVars);
+    })
+    .catch(err => console.log(err));
+  });
+
   router.get("/:id", (req, res) => {
     db.query(`
       SELECT maps.*, users.name
@@ -42,7 +60,6 @@ module.exports = (db) => {
       res.render("map", templateVars);
     })
     .catch(err => console.log(err));
-
   })
 
   router.get("/:id/points", (req, res) => {
@@ -57,22 +74,6 @@ module.exports = (db) => {
     .catch(err => console.log(err));
   });
 
-  router.get("/:id/addpoint", (req, res) => {
-    db.query(`
-    SELECT maps.*, users.name
-    FROM maps JOIN users ON maps.owner_id = users.id
-    WHERE maps.id = $1
-    `, [req.params.id])
-    .then(data => {
-      const templateVars = {
-        loggedInUser: req.session.userId,
-        mapObj: data.rows[0],
-        addPoint: 1
-      }
-      res.render("../views/map", templateVars)
-    })
-    .catch(err => console.log(err));
-  });
 
   return router;
 };
