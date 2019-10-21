@@ -58,7 +58,7 @@ app.use('/logout', logoutRoutes());
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
-  if (!req.session === undefined) {
+  if (req.session !== undefined) {
     const templateVars =  { loggedInUser: req.session.userId };
     res.render("index", templateVars);
   } else {
@@ -69,5 +69,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}`);
+  console.log(`wikiMap app listening on port ${PORT}`);
 });

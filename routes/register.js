@@ -35,7 +35,7 @@ module.exports = (db) => {
       RETURNING *;
     `;
     return db.query(sqlStatment, values)
-      .then(res => res.rows)
+      .then(res => res.rows[0])
       .catch((err) => {return null});
   };
 
@@ -63,6 +63,8 @@ module.exports = (db) => {
           user.password = bcrypt.hashSync(user.password, 10);
           addUser(user)
             .then(user => {
+              console.log(user.id);
+
               req.session.userId = user.id;
               res.redirect('/');
             })
