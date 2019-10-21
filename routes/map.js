@@ -39,6 +39,7 @@ module.exports = (db) => {
   router.get("/:id/points", (req, res) => {
     db.query(`
     SELECT * FROM points
+    JOIN keywords on points.keyword_id = keywords.id
     WHERE map_id = ${req.params.id}`)
     .then(data => {
       const points = data.rows;
