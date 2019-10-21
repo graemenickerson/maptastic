@@ -26,11 +26,10 @@ $(() => {
         let markerL = [point.lat, point.long]
         markers.push(markerL)
       }
-
       map.fitBounds(markers)
       zoom = map.getZoom()
       if (zoom > 14) {
-        map.setZoom(15);
+        map.setZoom(14);
       }
     });
   }
