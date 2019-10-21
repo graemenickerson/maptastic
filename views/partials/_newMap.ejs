@@ -14,9 +14,8 @@
   <div class="categories">
     <label for="category">Select a Category:</label>
     <% for (let category of map_icons) { %>
-      <input type="radio" name="title" value="<%= category.name %>"> <%= category.name %>
+      <input type="radio" name="cat-radio" value="<%= category.name %>"><%= category.name %></input>
     <% } %>
-
   </div>
   <div>
     <button type="submit" class="btn btn-primary">Create</button>

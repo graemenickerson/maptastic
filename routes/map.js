@@ -26,12 +26,25 @@ module.exports = (db) => {
     .catch(err => console.log(err));
   });
 
+  router.post("/", (req,res) => {
+    const values = [req.session.userId, req.body.cat-radio, req.body.title, req.body.description];
+    const sqlStatment = `
+      INSERT INTO maps (owner_id, icon_id, date_created, title, description)
+      VALUES ($1, $2, NOW(), $3, $4)
+      RETURNING *;
+    `;
+    db.query(sqlStatment,values)
+      .then(res => {
+        router.redirect(`map/${res.rows[0].id}`);
+      })
+      .catch(err => console.log(err));
+  });
 
   router.get("/:id", (req, res) => {
     db.query(`
       SELECT maps.*, users.name
       FROM maps JOIN users ON maps.owner_id = users.id
-      WHERE maps.id = $1
+      WHERE maps.id = $1;
     `, [req.params.id])
     .then(data => {
       const templateVars = {
@@ -48,7 +61,7 @@ module.exports = (db) => {
     db.query(`
     SELECT * FROM points
     JOIN keywords on points.keyword_id = keywords.id
-    WHERE map_id = ${req.params.id}`)
+    WHERE map_id = ${req.params.id};`)
     .then(data => {
       const points = data.rows;
       res.json({points});
