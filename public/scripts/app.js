@@ -12,6 +12,7 @@ $(() => {
         L.marker([point.lat, point.long]).addTo(map).bindPopup(`
         Title: ${point.title}
         Description: ${point.description}
+
         `);
         map.setView([point.lat, point.long], 13);
       }

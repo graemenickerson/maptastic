@@ -27,6 +27,7 @@
           <% if(mapObj) { %>
             <h1><%= mapObj.title %></h1>
             <h3><%= mapObj.description %></h3>
+            <h4>Created By: <a href="/users/<%= mapObj.owner_id %>"><%= mapObj.name %></a></h4>
             <p>To see details, click on a point</p>
             <% } else { %>
               <h1>BLAH BLAH</h1>

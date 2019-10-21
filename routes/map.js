@@ -19,8 +19,9 @@ module.exports = (db) => {
 
   router.get("/:id", (req, res) => {
     db.query(`
-    SELECT * FROM maps
-    WHERE id = ${req.params.id}
+    SELECT maps.*, users.name
+    FROM maps JOIN users ON maps.owner_id = users.id
+    WHERE maps.id = ${req.params.id}
     `)
     .then(data => {
       const templateVars = {
