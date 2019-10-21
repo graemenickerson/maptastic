@@ -12,7 +12,6 @@ $(() => {
     }).done((points) => {
       let markers = []
       for(point of points.points) {
-
         const point_icon = L.icon({
           iconUrl: point.img_loc,
           iconSize:     [40, 45], // size of the icon
