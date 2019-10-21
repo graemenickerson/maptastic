@@ -19,7 +19,9 @@ module.exports = (db) => {
       WHERE email = $1;
     `;
     return db.query(sqlStatment, value)
-      .then(res => res.rows[0])
+      .then(res => {
+        return res.rows[0];
+      })
       .catch((err) => {return null});
   }
   // Logs a user in after authentication.
