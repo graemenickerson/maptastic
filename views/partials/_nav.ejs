@@ -5,8 +5,8 @@
   <a id="brand" href="/">MAPPIN</a>
     <% if (loggedInUser) { %>
       <div id="logged-in">
-        <a href="map/create"><button id="createMap">Create New Map</button></a>
-        <a href="users/<%= loggedInUser %>"><button id="myMaps">My Maps</button></a>
+        <a href="/map"><button id="createMap">Create New Map</button></a>
+        <a href="/users/<%= loggedInUser %>"><button id="myMaps">My Maps</button></a>
         <form action="/logout" method="POST">
           <button id="logout">Logout</button>
         </form>

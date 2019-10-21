@@ -34,8 +34,7 @@ module.exports = (db) => {
             // const templateVar = { loggedInUser: true };
             res.redirect("/");
           } else {
-            const templateVar = { loggedInUser: false };
-            res.render('index', templateVar);
+            res.redirect("/");
           }
         })
         .catch(err => res.status(404).send('<p>ERROR!!</p>'));

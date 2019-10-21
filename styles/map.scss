@@ -20,3 +20,10 @@ body {
     width: 75%;
   }
 }
+
+.new-map {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
