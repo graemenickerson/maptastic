@@ -12,6 +12,7 @@ module.exports = (db) => {
 
   router.get("/", (req,res) => {
     const templateVars = {
+      loggedInUser: req.session.userId,
       mapObj: 0
     }
     res.render("../views/map", templateVars)
@@ -26,6 +27,7 @@ module.exports = (db) => {
     `, [req.params.id])
     .then(data => {
       const templateVars = {
+        loggedInUser: req.session.userId,
         mapObj: data.rows[0]
       }
       res.render("map", templateVars);
