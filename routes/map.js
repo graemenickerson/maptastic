@@ -32,17 +32,20 @@ module.exports = (db) => {
       }
       res.render("map", templateVars);
     })
+    .catch(err => console.log(err));
 
   })
 
   router.get("/:id/points", (req, res) => {
     db.query(`
     SELECT * FROM points
+    JOIN keywords on points.keyword_id = keywords.id
     WHERE map_id = ${req.params.id}`)
     .then(data => {
       const points = data.rows;
       res.json({points});
     })
+    .catch(err => console.log(err));
   });
   return router;
 };

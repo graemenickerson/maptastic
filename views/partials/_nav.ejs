@@ -2,12 +2,11 @@
 
 
 <nav id="nav-bar">
-  <span>MAPPIN</span>
+  <a id="brand" href="/">MAPPIN</a>
     <% if (loggedInUser) { %>
       <div id="logged-in">
-        <button id="createMap">Create New Map</button>
-        <button id="logout">View Maps</button>
-        <button id="myMaps">My Maps</button>
+        <a href="map/create"><button id="createMap">Create New Map</button></a>
+        <a href="users/<%= loggedInUser %>"><button id="myMaps">My Maps</button></a>
         <form action="/logout" method="POST">
           <button id="logout">Logout</button>
         </form>
@@ -18,7 +17,7 @@
           <div>
             <label for="email">Enter Login:</label>
             <input class="login-form" type="text" name="email" placeholder="user@example.com">
-            <input class="login-form" type="text" name="password" placeholder="password">
+            <input class="login-form" type="password" name="password" placeholder="password">
             <button type="submit">Login</button>
           </div>
         </form>
