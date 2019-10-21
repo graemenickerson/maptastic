@@ -39,16 +39,18 @@ app.use(cookieSession({
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-const usersRoutes = require("./routes/users");
+// const usersRoutes = require("./routes/users");
 const mapRoutes = require("./routes/map");
+const userRoutes = require("./routes/users");
 const registerRoutes = require("./routes/register");
 const loginRoutes = require("./routes/login");
 const logoutRoutes = require("./routes/logout");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-app.use("/api/users", usersRoutes(db));
+// app.use("/api/users", usersRoutes(db));
 app.use('/map', mapRoutes(db));
+app.use('/users', userRoutes(db));
 app.use('/register', registerRoutes(db));
 app.use('/login', loginRoutes(db));
 app.use('/logout', logoutRoutes());
