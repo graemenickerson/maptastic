@@ -17,12 +17,13 @@ module.exports = (db) => {
     res.render("../views/map", templateVars)
   });
 
+
   router.get("/:id", (req, res) => {
     db.query(`
     SELECT maps.*, users.name
     FROM maps JOIN users ON maps.owner_id = users.id
-    WHERE maps.id = ${req.params.id}
-    `)
+    WHERE maps.id = $1
+    `, [req.params.id])
     .then(data => {
       const templateVars = {
         mapObj: data.rows[0]
