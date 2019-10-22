@@ -130,6 +130,7 @@ module.exports = (db) => {
         .then(data => {
           const templateVars = {
             loggedInUser: loggedInUser,
+            userName: req.session.userName,
             mapObj: data[0].rows[0],
             keywords: data[1].rows,
             addPoint: 0,
