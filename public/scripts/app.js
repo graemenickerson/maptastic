@@ -27,6 +27,7 @@ $(() => {
         <b>${point.title}</b> <br>
         ${point.description} <br>
         <img src=${point.picture}  max width="150" max height="150"> <br>
+        <i>created by: ${point.user_name}</i>
         `).on("click", function(event) {
           if (myURL[5] == 'editpoint') {
             document.getElementById('title').value = point.title;
