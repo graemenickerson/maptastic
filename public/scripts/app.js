@@ -1,3 +1,6 @@
+// app.js
+
+// Takes mapId and populates the map with points that belong to it.
 $(() => {
 
   let myURL = window.location.href.split("/");
@@ -10,8 +13,8 @@ $(() => {
       method: "GET",
       url: `/map/${myId}/points`
     }).done((points) => {
-      let markers = []
-      for(point of points.points) {
+      let markers = [];
+      for (let point of points.points) {
         const point_icon = L.icon({
           iconUrl: point.img_loc,
           iconSize:     [40, 45], // size of the icon
@@ -24,11 +27,11 @@ $(() => {
         ${point.description} <br>
         <img src=${point.picture} max width="150"  max height="150"> <br>
         `);
-        let markerL = [point.lat, point.long]
-        markers.push(markerL)
+        let markerL = [point.lat, point.long];
+        markers.push(markerL);
       }
-      map.fitBounds(markers)
-      zoom = map.getZoom()
+      map.fitBounds(markers);
+      zoom = map.getZoom();
       if (zoom > 14) {
         map.setZoom(14);
       }

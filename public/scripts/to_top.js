@@ -10,9 +10,9 @@ $(document).ready(function() {
       $('#to-top').hide();
     }
   });
+
   // Scrolls the window to the top and toggles the new tweet form
   $("#to-top").click(function() {
     $("HTML, BODY").animate({ scrollTop: 0 }, 1000);
-    $('#new-post').slideToggle("slow");
   });
 });

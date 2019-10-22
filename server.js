@@ -19,7 +19,8 @@ db.connect();
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
-//         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
+// The :status token will be colored red for server error codes, yellow for client error codes,
+// cyan for redirection codes, and uncolored for all other codes.
 app.use(morgan('dev'));
 
 app.set("view engine", "ejs");
@@ -30,16 +31,14 @@ app.use("/styles", sass({
   debug: true,
   outputStyle: 'expanded'
 }));
-app.use(express.static("public"));
 app.use(cookieSession({
   name: 'session',
   keys: [process.env.cookieString],
   maxAge: 24 * 60 * 60 * 1000 // 24 hours
 }));
+app.use(express.static("public"));
 
 // Separated Routes for each Resource
-// Note: Feel free to replace the example routes below with your own
-// const usersRoutes = require("./routes/users");
 const mapRoutes = require("./routes/map");
 const userRoutes = require("./routes/users");
 const registerRoutes = require("./routes/register");
@@ -47,19 +46,14 @@ const loginRoutes = require("./routes/login");
 const logoutRoutes = require("./routes/logout");
 
 // Mount all resource routes
-// Note: Feel free to replace the example routes below with your own
-// app.use("/api/users", usersRoutes(db));
 app.use('/map', mapRoutes(db));
 app.use('/users', userRoutes(db));
 app.use('/register', registerRoutes(db));
 app.use('/login', loginRoutes(db));
 app.use('/logout', logoutRoutes());
-// Note: mount other resources here, using the same pattern above
 
 
 // Home page
-// Warning: avoid creating more routes in this file!
-// Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
   const templateVars = {};
   if (req.session !== undefined) {
@@ -69,20 +63,17 @@ app.get("/", (req, res) => {
     templateVars.loggedInUser = req.session.userId;
   }
   db.query(`
-  SELECT maps.*, map_icons.icon
-  FROM maps
-  JOIN map_icons ON maps.icon_id = map_icons.id
-  ORDER BY date_created DESC;
+    SELECT maps.*, map_icons.icon
+    FROM maps
+    JOIN map_icons ON maps.icon_id = map_icons.id
+    ORDER BY date_created DESC;
   `)
-  .then(data => {
-    console.log(data.rows)
-    templateVars.mapsArr =  data.rows;
-    res.render("index", templateVars)
-  })
-  .catch(err => console.log(err));
-
+    .then(data => {
+      templateVars.mapsArr =  data.rows;
+      res.render("index", templateVars);
+    })
+    .catch(err => console.log(err));
 });
-
 
 
 app.listen(PORT, () => {
