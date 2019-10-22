@@ -27,6 +27,8 @@
         <div class="sidebar">
           <% if (addPoint) { %>
             <% include ./partials/_newPoint %>
+          <% } else if (editPoint) { %>
+            <% include ./partials/_editPoint %>
           <% } else if (mapObj) { %>
             <h1><%= mapObj.title %></h1>
             <h3><%= mapObj.description %></h3>
@@ -35,6 +37,7 @@
 
             <% if (loggedInUser) { %>
               <a href="/map/<%= mapObj.id %>/addpoint"><button id="addpoint">Add a new point!</button></a>
+              <a href="/map/<%= mapObj.id %>/editpoint"><button id="editpoint">Edit a point!</button></a>
               <form action="/map/<%= mapObj.id %>/favourite" method="POST">
                 <button type="submit" id="favorite">Favorite this map!</button>
               </form>
@@ -53,7 +56,7 @@
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
 
-  <% if(addPoint) { %>
+  <% if(addPoint || editPoint) { %>
     <script type="text/javascript" src="/scripts/add_point.js"></script>
   <% } %>
   <script type="text/javascript" src="/scripts/userDropdown.js"></script>

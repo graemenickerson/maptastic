@@ -1,0 +1,30 @@
+<!-- _newPoint.ejs -->
+<form class="edit-point" action="/map/<%= mapObj.map_id %>/editpoint" method="POST">
+  <h1><%= mapObj.title %></h1>
+  <h2>Edit a point</h3>
+    <h3>Select a point to edit</h3>
+  <div class="categories">
+    <label for="title">Title</label><br>
+    <input type="text" id='title' name="title" placeholder="Title">
+  </div>
+  <div class="categories">
+    <label for="description">Description</label><br>
+    <textarea rows="4" cols="30" id='description' name="description" placeholder="Describe your point..."></textarea>
+  </div>
+  <div class="categories">
+    <label for="image">Add a URL with a photo of this location!</label><br>
+    <input type="text" id='image' name="image" placeholder="http://"></textarea>
+  </div>
+  <div class="categories">
+    <label for="category">Select a Category:</label><br>
+      <select id='keywords' name="keywords">
+      <% for (let category of keywords) { %>
+        <option id='dropdown' value="<%= category.id %>"> <%= category.word %>
+      <% } %>
+        </select>
+      </div>
+      <input type='hidden' id='pointid' name='pointid' value=''>
+  <div>
+    <button type="submit" class="btn btn-primary">Update Point</button>
+  </div>
+</form>

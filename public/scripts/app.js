@@ -5,10 +5,12 @@ $(() => {
 
   let myURL = window.location.href.split("/");
   let myId;
+
   if (myURL[3] === 'map') {
     myId = myURL[4];
+
   }
-  if (myId && myId !== 'map' && myId !== 'addpoint' && myId !== 'favourite') {
+  if (myId) {
     $.ajax({
       method: "GET",
       url: `/map/${myId}/points`
@@ -21,12 +23,22 @@ $(() => {
           iconAnchor:   [20, 45], // point of the icon which will correspond to marker's location
           popupAnchor:  [0, -45] // point from which the popup should open relative to the iconAnchor
         });
-
         L.marker([point.lat, point.long], {icon: point_icon}).addTo(map).bindPopup(`
         <b>${point.title}</b> <br>
         ${point.description} <br>
-        <img src=${point.picture} max width="150"  max height="150"> <br>
-        `);
+        <img src=${point.picture}  max width="150" max height="150"> <br>
+        `).on("click", function(event) {
+          if (myURL[5] == 'editpoint') {
+            document.getElementById('title').value = point.title;
+            document.getElementById('description').value = point.description;
+            document.getElementById('image').value = point.picture;
+            dropdown = document.getElementById('dropdown')
+            dropdown.value = point.keyword_id;
+            dropdown.text = point.word;
+            console.log(point)
+            document.getElementById('pointid').value = point.id;
+          }
+        })
         let markerL = [point.lat, point.long];
         markers.push(markerL);
       }
