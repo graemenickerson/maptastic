@@ -117,15 +117,21 @@ module.exports = (db) => {
       GROUP BY maps.id, users.name;
     `, [req.params.id])
       .then(data => {
-        console.log(data.rows[0]);
-        const templateVars = {
-          loggedInUser: req.session.userId,
-          mapObj: data.rows[0],
-          addPoint: 0
-        };
-        res.render("map", templateVars);
+        mapObj = data.rows[0]
+        if (mapObj) {
+          const templateVars = {
+            loggedInUser: req.session.userId,
+            mapObj: mapObj,
+            addPoint: 0
+          };
+          res.render("map", templateVars);
+        } else {
+          res.redirect('/')
+        }
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err);
+      })
   });
 
 
