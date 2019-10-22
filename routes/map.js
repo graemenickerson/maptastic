@@ -30,9 +30,8 @@ module.exports = (db) => {
   router.get("/:id/addpoint", (req, res) => {
     const pointsQuery = db.query(`
     SELECT points.*, maps.title FROM points
-    JOIN keywords on points.keyword_id = keywords.id
-    JOIN maps on points.map_id = maps.id
-    WHERE map_id = $1
+    RIGHT JOIN maps ON maps.id = points.map_id
+    WHERE maps.id = $1;
     `, [req.params.id])
     const keywordsQuery = db.query(`
     SELECT * FROM keywords
@@ -40,12 +39,14 @@ module.exports = (db) => {
     `)
     Promise.all([pointsQuery, keywordsQuery])
     .then(data => {
+      console.log(':::::::::', data[0].rows)
       const templateVars = {
         loggedInUser: req.session.userId,
         mapObj: data[0].rows[0],
         keywords: data[1].rows,
         addPoint: 1
       }
+      console.log(data[0].rows[0])
       res.render("map", templateVars);
     })
     .catch(err => console.log(err));
