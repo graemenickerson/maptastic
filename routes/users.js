@@ -37,11 +37,12 @@ module.exports = (db) => {
     const myMaps = db.query(`
     SELECT maps.id, maps.title, map_icons.icon FROM maps
     JOIN map_icons ON maps.icon_id = map_icons.id
-    WHERE owner_id = $1;
+    WHERE owner_id = $1
+    ORDER BY maps.date_created;
     `, [req.params.id]);
 
     const myFaves = db.query(`
-    SELECT maps.id, maps.title, map_icons.icon FROM maps
+    SELECT DISTINCT maps.id, maps.title, map_icons.icon FROM maps
     JOIN map_icons ON maps.icon_id = map_icons.id
     JOIN users_favourites ON maps.id = map_id
     WHERE users_favourites.user_id = $1;
