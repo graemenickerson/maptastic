@@ -1,5 +1,5 @@
 <!-- _newPoint.ejs -->
-<form class="add-point" action="/addpoint" method="POST">
+<form class="add-point" action="addpoint/add" method="POST">
   <h1><%= mapObj.title %></h1>
   <h2>Add a new point</h3>
     <h3>Select a spot on the map and then fill out this form! </h3>
@@ -17,11 +17,15 @@
   </div>
   <div class="categories">
     <label for="category">Select a Category:</label><br>
-      <select id="keywords">
+      <select name="keywords">
       <% for (let category of keywords) { %>
-        <option value="<%= category.word %>"> <%= category.word %>
+        <option value="<%= category.id %>"> <%= category.word %>
       <% } %>
         </select>
+      </div>
+      <div>
+        <input type='hidden' id='lati' name='lati' value=''>
+        <input type='hidden' id='longi' name='longi' value=''>
       </div>
   <div>
     <button type="submit" class="btn btn-primary">Create</button>
