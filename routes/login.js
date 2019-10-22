@@ -1,3 +1,4 @@
+// login.js
 
 const express = require('express');
 const router  = express.Router();
@@ -22,25 +23,27 @@ module.exports = (db) => {
       .then(res => {
         return res.rows[0];
       })
-      .catch((err) => {return null});
-  }
+      .catch((err) => {
+        return null;
+      });
+  };
+
   // Logs a user in after authentication.
   router.post("/", (req,res) => {
-      const userEmail = req.body.email;
-      getUserByEmail(userEmail)
-        .then(user => {
-          if (user && bcrypt.compareSync(req.body.password, user.password)) {
-            req.session.userId = user.id;
-            // const templateVar = { loggedInUser: true };
-            res.redirect("/");
-          } else {
-            res.redirect("/");
-          }
-        })
-        .catch(err => res.status(404).send('<p>ERROR!!</p>'));
-    });
+    const userEmail = req.body.email;
+    getUserByEmail(userEmail)
+      .then(user => {
+        if (user && bcrypt.compareSync(req.body.password, user.password)) {
+          req.session.userId = user.id;
+          res.redirect("/");
+        } else {
+          res.redirect("/");
+        }
+      })
+      .catch(err => res.status(404).send(err));
+  });
 
-   return router;
+  return router;
 };
 
 

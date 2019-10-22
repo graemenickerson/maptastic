@@ -1,3 +1,5 @@
+// logout.js
+
 
 const express = require('express');
 const router  = express.Router();
@@ -9,7 +11,7 @@ router.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000 // 24 hours
 }));
 
-module.exports = (db) => {
+module.exports = () => {
   // Logs user out and deletes cookie from browser
   router.post("/", (req, res) => {
     req.session = null;
@@ -17,4 +19,4 @@ module.exports = (db) => {
   });
 
   return router;
-}
+};

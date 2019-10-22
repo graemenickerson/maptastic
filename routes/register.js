@@ -1,3 +1,4 @@
+// register.js
 
 const express = require('express');
 const router  = express.Router();
@@ -17,7 +18,6 @@ module.exports = (db) => {
   // Shows page for creating new user
   router.get("/", (req,res) => {
     if (!req.session === undefined) {
-      console.log(req.session.userId)
       const templateVars =  { loggedInUser: req.session.userId };
       res.render("register", templateVars);
     } else {
@@ -25,7 +25,7 @@ module.exports = (db) => {
       const templateVars =  { loggedInUser: req.session.userId };
       res.render("register", templateVars);
     }
-    });
+  });
 
   const addUser = function(user) {
     const values = [user.name, user.email, user.password];
@@ -36,7 +36,9 @@ module.exports = (db) => {
     `;
     return db.query(sqlStatment, values)
       .then(res => res.rows[0])
-      .catch((err) => {return null});
+      .catch((err) => {
+        return null;
+      });
   };
 
   const getUserByEmail = function(user) {
@@ -49,22 +51,22 @@ module.exports = (db) => {
       .then(res => {
         return res.rows[0];
       })
-      .catch((err) => {return null});
-  }
+      .catch((err) => {
+        return null;
+      });
+  };
 
   // Take new user info and stores it also assigns cookie
   router.post('/', (req, res) => {
     const user = req.body;
     getUserByEmail(user)
-      .then (exists => {
+      .then(exists => {
         if (exists) {
           res.redirect('register');
         } else {
           user.password = bcrypt.hashSync(user.password, 10);
           addUser(user)
             .then(user => {
-              console.log(user.id);
-
               req.session.userId = user.id;
               res.redirect('/');
             })

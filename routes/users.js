@@ -1,6 +1,6 @@
 /*
  * All routes for Users are defined here
- * Since this file is loaded in server.js into api/users,
+ * Since this file is loaded in server.js into /users,
  *   these routes are mounted onto /users
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
@@ -14,8 +14,8 @@ module.exports = (db) => {
     const templateVars = {
       loggedInUser: req.session.userId,
       user: 0,
-    }
-    res.render("users", templateVars)
+    };
+    res.render("users", templateVars);
   });
 
   router.get("/:id", (req, res) => {
@@ -23,14 +23,14 @@ module.exports = (db) => {
     SELECT * FROM users
     WHERE users.id = $1
     `, [req.params.id])
-    .then(data => {
-      const templateVars = {
-        loggedInUser: req.session.userId,
-        user: data.rows[0]
-      }
-      res.render("users", templateVars)
-    })
-    .catch(err => console.log(err));
+      .then(data => {
+        const templateVars = {
+          loggedInUser: req.session.userId,
+          user: data.rows[0]
+        };
+        res.render("users", templateVars);
+      })
+      .catch(err => console.log(err));
   });
 
   router.get("/:id/maps", (req, res) => {
@@ -56,17 +56,15 @@ module.exports = (db) => {
 
 
     Promise.all([myMaps, myFaves, myContributions])
-    .then(data => {
-      const userMaps = {
-        myMaps: data[0].rows,
-        myFaves: data[1].rows,
-        myContributions: data[2].rows
-      };
-      res.json(userMaps)
-
-
-    })
-    .catch(err => console.log(err));
+      .then(data => {
+        const userMaps = {
+          myMaps: data[0].rows,
+          myFaves: data[1].rows,
+          myContributions: data[2].rows
+        };
+        res.json(userMaps);
+      })
+      .catch(err => console.log(err));
 
   //   .then(data => {
   //     const points = data.rows;
@@ -76,4 +74,4 @@ module.exports = (db) => {
   });
 
   return router;
-}
+};

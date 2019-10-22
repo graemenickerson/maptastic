@@ -11,23 +11,20 @@
   </head>
 
   <body>
-      <% include ./partials/_nav %>
+    <% include ./partials/_nav %>
 
-      <% if(user) { %>
-        <h1><%= user.name %></h1>
-        <% } else { %>
-        <h1>Username</h1>
-        <% } %>
+    <% if (user) { %>
+      <h1><%= user.name %></h1>
+    <% } else { %>
+      <h1>Username</h1>
+    <% } %>
 
-
-        <h3>Maps Created</h3>
-        <div class="made"></div>
-        <h3>Maps Contributed To</h3>
-        <div class="contributed"></div>
-        <h3>Favourite Maps</h3>
-        <div class="favourited"></div>
-
-
+    <h3>Maps Created</h3>
+    <div class="made"></div>
+    <h3>Maps Contributed To</h3>
+    <div class="contributed"></div>
+    <h3>Favourite Maps</h3>
+    <div class="favourited"></div>
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/users.js"></script>

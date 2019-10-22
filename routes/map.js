@@ -1,7 +1,7 @@
 /*
  * All routes for Widgets are defined here
- * Since this file is loaded in server.js into api/widgets,
- *   these routes are mounted onto /widgets
+ * Since this file is loaded in server.js into /map,
+ *   these routes are mounted onto /map
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
@@ -15,17 +15,17 @@ module.exports = (db) => {
       SELECT name, id
       FROM map_icons;
     `)
-    .then(data => {
-      const templateVars = {
-        loggedInUser: req.session.userId,
-        mapObj: 0,
-        map_icons: data.rows,
-        addPoint: 0
-      }
-      console.log(data.rows)
-      res.render("../views/map", templateVars)
-    })
-    .catch(err => console.log(err));
+      .then(data => {
+        const templateVars = {
+          loggedInUser: req.session.userId,
+          mapObj: 0,
+          map_icons: data.rows,
+          addPoint: 0
+        };
+        console.log(data.rows);
+        res.render("../views/map", templateVars);
+      })
+      .catch(err => console.log(err));
   });
 
   router.post("/", (req,res) => {
@@ -48,24 +48,24 @@ module.exports = (db) => {
     SELECT points.*, maps.title FROM points
     RIGHT JOIN maps ON maps.id = points.map_id
     WHERE maps.id = $1;
-    `, [req.params.id])
+    `, [req.params.id]);
     const keywordsQuery = db.query(`
     SELECT * FROM keywords
     ORDER BY word;
-    `)
+    `);
     Promise.all([pointsQuery, keywordsQuery])
-    .then(data => {
-      console.log(':::::::::', data[0].rows)
-      const templateVars = {
-        loggedInUser: req.session.userId,
-        mapObj: data[0].rows[0],
-        keywords: data[1].rows,
-        addPoint: 1
-      }
-      console.log(data[0].rows[0])
-      res.render("map", templateVars);
-    })
-    .catch(err => console.log(err));
+      .then(data => {
+        console.log(':::::::::', data[0].rows);
+        const templateVars = {
+          loggedInUser: req.session.userId,
+          mapObj: data[0].rows[0],
+          keywords: data[1].rows,
+          addPoint: 1
+        };
+        console.log(data[0].rows[0]);
+        res.render("map", templateVars);
+      })
+      .catch(err => console.log(err));
   });
 
   router.get("/:id", (req, res) => {
@@ -74,27 +74,27 @@ module.exports = (db) => {
       FROM maps JOIN users ON maps.owner_id = users.id
       WHERE maps.id = $1;
     `, [req.params.id])
-    .then(data => {
-      const templateVars = {
-        loggedInUser: req.session.userId,
-        mapObj: data.rows[0],
-        addPoint: 0
-      }
-      res.render("map", templateVars);
-    })
-    .catch(err => console.log(err));
-  })
+      .then(data => {
+        const templateVars = {
+          loggedInUser: req.session.userId,
+          mapObj: data.rows[0],
+          addPoint: 0
+        };
+        res.render("map", templateVars);
+      })
+      .catch(err => console.log(err));
+  });
 
   router.get("/:id/points", (req, res) => {
     db.query(`
-    SELECT * FROM points
-    JOIN keywords on points.keyword_id = keywords.id
-    WHERE map_id = ${req.params.id};`)
-    .then(data => {
-      const points = data.rows;
-      res.json({points});
-    })
-    .catch(err => console.log(err));
+      SELECT * FROM points
+      JOIN keywords on points.keyword_id = keywords.id
+      WHERE map_id = ${req.params.id};`)
+      .then(data => {
+        const points = data.rows;
+        res.json({points});
+      })
+      .catch(err => console.log(err));
   });
 
 

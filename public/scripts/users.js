@@ -1,7 +1,11 @@
+// users.js
+
+// creates view for maps belonging to and favorited by a user.
+
 $(() => {
 
   let myURL = window.location.href.split("/");
-  const myId = myURL[myURL.length -1];
+  const myId = myURL[myURL.length - 1];
 
   console.log(myId);
   if (myId) {
