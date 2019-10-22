@@ -15,9 +15,8 @@ $(() => {
         const point_icon = L.icon({
           iconUrl: point.img_loc,
           iconSize:     [40, 45], // size of the icon
-          iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-          shadowAnchor: [4, 62],  // the same for the shadow
-          popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+          iconAnchor:   [20, 45], // point of the icon which will correspond to marker's location
+          popupAnchor:  [0, -45] // point from which the popup should open relative to the iconAnchor
         });
 
         L.marker([point.lat, point.long], {icon: point_icon}).addTo(map).bindPopup(`

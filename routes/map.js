@@ -28,16 +28,22 @@ module.exports = (db) => {
   });
 
   router.get("/:id/addpoint", (req, res) => {
-    db.query(`
-    SELECT * FROM points
+    const pointsQuery = db.query(`
+    SELECT points.*, maps.title FROM points
     JOIN keywords on points.keyword_id = keywords.id
+    JOIN maps on points.map_id = maps.id
     WHERE map_id = $1
     `, [req.params.id])
+    const keywordsQuery = db.query(`
+    SELECT * FROM keywords
+    ORDER BY word;
+    `)
+    Promise.all([pointsQuery, keywordsQuery])
     .then(data => {
-
       const templateVars = {
         loggedInUser: req.session.userId,
-        mapObj: data.rows[0],
+        mapObj: data[0].rows[0],
+        keywords: data[1].rows,
         addPoint: 1
       }
       res.render("map", templateVars);

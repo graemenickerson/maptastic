@@ -1,18 +1,28 @@
 
 <form class="new-map" action="/map" method="POST">
-  <h1>Add new point:</h1>
+  <h1><%= mapObj.title %></h1>
+  <h2>Add a new point</h3>
+    <h3>Select a spot on the map and then fill out this form! </h3>
   <div class="categories">
-    <label for="title">Title</label>
+    <label for="title">Title</label><br>
     <input type="text" name="title" placeholder="Title">
   </div>
   <div class="categories">
-    <label for="description">Description</label>
-    <input type="text" name="description" placeholder="Describe your map..."></textarea>
+    <label for="description">Description</label><br>
+    <textarea rows="4" cols="30" name="description" placeholder="Describe your point..."></textarea>
   </div>
   <div class="categories">
-    <label for="image">Image URL</label>
-    <input type="text" name="image" placeholder="Add an image URL!"></textarea>
+    <label for="image">Add a URL with a photo of this location!</label><br>
+    <input type="text" name="image" placeholder="http://"></textarea>
   </div>
+  <div class="categories">
+    <label for="category">Select a Category:</label><br>
+      <select id="keywords">
+      <% for (let category of keywords) { %>
+        <option value="<%= category.word %>"> <%= category.word %>
+      <% } %>
+        </select>
+      </div>
   <div>
     <button type="submit" class="btn btn-primary">Create</button>
   </div>
