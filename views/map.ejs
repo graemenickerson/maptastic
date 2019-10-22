@@ -32,9 +32,9 @@
             <h3><%= mapObj.description %></h3>
             <h4>Created By: <a href="/users/<%= mapObj.owner_id %>"><%= mapObj.name %></a></h4>
             <p>To see details, click on a point</p>
-            <a href="/map/<%= mapObj.id %>/addpoint"><button id="addpoint">Add a new point!</button></a>
 
             <% if (loggedInUser) { %>
+              <a href="/map/<%= mapObj.id %>/addpoint"><button id="addpoint">Add a new point!</button></a>
               <form action="/map/<%= mapObj.id %>/favourite" method="POST">
                 <button type="submit" id="favorite">Favorite this map!</button>
               </form>
