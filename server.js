@@ -69,16 +69,20 @@ app.get("/", (req, res) => {
     templateVars.loggedInUser = req.session.userId;
   }
   db.query(`
-  SELECT * FROM maps
+  SELECT maps.*, map_icons.icon
+  FROM maps
+  JOIN map_icons ON maps.icon_id = map_icons.id
   ORDER BY date_created DESC;
   `)
   .then(data => {
+    console.log(data.rows)
     templateVars.mapsArr =  data.rows;
     res.render("index", templateVars)
   })
   .catch(err => console.log(err));
 
 });
+
 
 
 app.listen(PORT, () => {
