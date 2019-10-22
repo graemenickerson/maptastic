@@ -80,6 +80,7 @@ module.exports = (db) => {
       Promise.all([pointsQuery, keywordsQuery])
         .then(data => {
           const templateVars = {
+            userName: req.session.userName,
             loggedInUser: loggedInUser,
             mapObj: data[0].rows[0],
             keywords: data[1].rows,
@@ -120,6 +121,7 @@ module.exports = (db) => {
         console.log(data.rows[0]);
         const templateVars = {
           loggedInUser: req.session.userId,
+          userName: req.session.userName,
           mapObj: data.rows[0],
           addPoint: 0
         };
@@ -140,6 +142,7 @@ module.exports = (db) => {
         .then(data => {
           const templateVars = {
             loggedInUser: loggedInUser,
+            userName: req.session.userName,
             mapObj: 0,
             map_icons: data.rows,
             addPoint: 0

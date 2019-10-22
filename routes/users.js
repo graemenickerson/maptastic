@@ -13,6 +13,7 @@ module.exports = (db) => {
   router.get("/", (req,res) => {
     const templateVars = {
       loggedInUser: req.session.userId,
+      userName: req.session.userName,
       user: 0,
     };
     res.render("users", templateVars);
@@ -26,6 +27,7 @@ module.exports = (db) => {
       .then(data => {
         const templateVars = {
           loggedInUser: req.session.userId,
+          userName: req.session.userName,
           user: data.rows[0]
         };
         res.render("users", templateVars);
@@ -66,11 +68,6 @@ module.exports = (db) => {
       })
       .catch(err => console.log(err));
 
-  //   .then(data => {
-  //     const points = data.rows;
-  //     res.json({points});
-  //   })
-  //   .catch(err => console.log(err));
   });
 
   return router;

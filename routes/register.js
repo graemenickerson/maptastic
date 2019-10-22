@@ -18,7 +18,10 @@ module.exports = (db) => {
   // Shows page for creating new user
   router.get("/", (req,res) => {
     if (!req.session === undefined) {
-      const templateVars =  { loggedInUser: req.session.userId };
+      const templateVars =  {
+        loggedInUser: req.session.userId,
+        userName: req.session.userName
+      };
       res.render("register", templateVars);
     } else {
       req.session.userId = null;
@@ -68,6 +71,7 @@ module.exports = (db) => {
           addUser(user)
             .then(user => {
               req.session.userId = user.id;
+              req.session.userName = user.name;
               res.redirect('/');
             })
             .catch(error => res.send(error));

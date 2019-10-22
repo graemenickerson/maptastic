@@ -35,6 +35,7 @@ module.exports = (db) => {
       .then(user => {
         if (user && bcrypt.compareSync(req.body.password, user.password)) {
           req.session.userId = user.id;
+          req.session.userName = user.name;
           res.redirect("/");
         } else {
           res.redirect("/");

@@ -58,9 +58,12 @@ app.get("/", (req, res) => {
   const templateVars = {};
   if (req.session !== undefined) {
     templateVars.loggedInUser = req.session.userId;
+    templateVars.userName = req.session.userName;
   } else {
     req.session.userId = null;
+    req.session.userName = null;
     templateVars.loggedInUser = req.session.userId;
+    templateVars.userName = req.session.userName;
   }
   db.query(`
     SELECT maps.*, map_icons.icon

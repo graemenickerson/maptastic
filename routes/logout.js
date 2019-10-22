@@ -13,7 +13,7 @@ router.use(cookieSession({
 
 module.exports = () => {
   // Logs user out and deletes cookie from browser
-  router.post("/", (req, res) => {
+  router.get("/", (req, res) => {
     req.session = null;
     res.redirect('/');
   });
