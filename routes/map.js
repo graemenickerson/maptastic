@@ -10,6 +10,20 @@ const router  = express.Router();
 
 module.exports = (db) => {
 
+  router.post("/:id/addpoint/add", (req,res) => {
+    const values = [req.params.id, req.body.title, req.body.description, req.body.image, req.body.keywords, req.body.lati, req.body.longi]
+    const sqlStatment = `
+      INSERT INTO points (map_id, title, description, picture, keyword_id, lat, long)
+      VALUES ($1, $2, $3, $4, $5, $6, $7)
+      RETURNING *;
+    `;
+    db.query(sqlStatment,values)
+      .then(returned => {
+        res.redirect(`/map/${req.params.id}`);
+      })
+      .catch(err => console.log(err));
+  });
+
   router.get("/", (req,res) => {
     db.query(`
       SELECT name, id
@@ -22,7 +36,6 @@ module.exports = (db) => {
           map_icons: data.rows,
           addPoint: 0
         };
-        console.log(data.rows);
         res.render("../views/map", templateVars);
       })
       .catch(err => console.log(err));
@@ -56,6 +69,7 @@ module.exports = (db) => {
       .catch(err => console.log(err));
   });
 
+
   router.get("/:id/addpoint", (req, res) => {
     const pointsQuery = db.query(`
     SELECT points.*, maps.title FROM points
@@ -68,14 +82,12 @@ module.exports = (db) => {
     `);
     Promise.all([pointsQuery, keywordsQuery])
       .then(data => {
-        console.log(':::::::::', data[0].rows);
         const templateVars = {
           loggedInUser: req.session.userId,
           mapObj: data[0].rows[0],
           keywords: data[1].rows,
           addPoint: 1
         };
-        console.log(data[0].rows[0]);
         res.render("map", templateVars);
       })
       .catch(err => console.log(err));
