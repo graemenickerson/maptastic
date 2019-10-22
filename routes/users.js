@@ -49,12 +49,11 @@ module.exports = (db) => {
     `, [req.params.id]);
 
     const myContributions = db.query(`
-    SELECT maps.id, maps.title, map_icons.icon FROM maps
-    JOIN map_icons ON maps.icon_id = map_icons.id
-    JOIN  map_contributors ON maps.id = map_id
-    WHERE map_contributors.contributor_id = $1;
+    SELECT DISTINCT maps.id, maps.title, map_icons.icon FROM maps
+    JOIN points on maps.id = map_id
+    JOIN map_icons ON map_icons.id = maps.icon_id
+    WHERE points.user_id = $1;
     `, [req.params.id]);
-
 
     Promise.all([myMaps, myFaves, myContributions])
       .then(data => {
