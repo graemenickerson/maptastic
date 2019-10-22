@@ -21,11 +21,15 @@ module.exports = (db) => {
       VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
       RETURNING *;
     `;
-    db.query(sqlStatment,values)
-      .then(returned => {
-        res.redirect(`/map/${req.params.id}`);
-      })
-      .catch(err => console.log(err));
+    if (req.body.lati === "" || req.body.longi === "") {
+      res.redirect(`/map/${req.params.id}/addpoint`);
+    } else {
+      db.query(sqlStatment,values)
+        .then(returned => {
+          res.redirect(`/map/${req.params.id}`);
+        })
+        .catch(err => console.log(err));
+    }
   });
 
   //POST add a new point to specified map
