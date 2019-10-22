@@ -147,8 +147,9 @@ module.exports = (db) => {
   //GET points associated with given map id
   router.get("/:id/points", (req, res) => {
     db.query(`
-      SELECT points.*, keywords.img_loc, keywords.word FROM points
+      SELECT points.*, keywords.img_loc, keywords.word, users.name as user_name FROM points
       JOIN keywords on points.keyword_id = keywords.id
+      JOIN users on users.id = points.user_id
       WHERE map_id = ${req.params.id};`)
       .then(data => {
         const points = data.rows;
