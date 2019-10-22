@@ -11,19 +11,16 @@ $(() => {
     }).done((userMaps) => {
 
       for (const map of userMaps.myMaps) {
-        $("div.made").append(`<span><a href= "/map/${map.id}">${map.title}</a></span>`);
+        $("div.made").append(`<span><a href= "/map/${map.id}">${map.title}</a><a href= "/map/${map.id}"><img src="${map.icon}"></a></span>`);
       }
 
       for (const map of userMaps.myContributions) {
-        $("div.contributed").append(`<span><a href= "/map/${map.id}">${map.title}</a></span>`);
+        $("div.contributed").append(`<span><a href= "/map/${map.id}">${map.title}</a><a href= "/map/${map.id}"><img src="${map.icon}"></a></span>`);
       }
 
       for (const map of userMaps.myFaves) {
-        $("div.favourited").append(`<span><a href= "/map/${map.id}">${map.title}</a></span>`);
+        $("div.favourited").append(`<span><a href= "/map/${map.id}">${map.title}</a><a href= "/map/${map.id}"><img src="${map.icon}"></a></span>`);
       }
-
-
-
 
     });
   }
