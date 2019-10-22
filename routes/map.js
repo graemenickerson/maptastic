@@ -72,7 +72,7 @@ module.exports = (db) => {
     db.query(`
       SELECT maps.*, users.name, COUNT(users_favourites.*) as faved
       FROM maps JOIN users ON maps.owner_id = users.id
-      JOIN users_favourites ON maps.id = map_id
+      LEFT JOIN users_favourites ON maps.id = map_id
       WHERE maps.id = $1
       GROUP BY maps.id, users.name;
     `, [req.params.id])
