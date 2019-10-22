@@ -50,7 +50,6 @@ module.exports = (db) => {
     WHERE map_id = $1
     `, [req.params.id])
     .then(data => {
-
       const templateVars = {
         loggedInUser: req.session.userId,
         mapObj: data.rows[0],
