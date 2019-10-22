@@ -83,7 +83,8 @@ module.exports = (db) => {
             loggedInUser: loggedInUser,
             mapObj: data[0].rows[0],
             keywords: data[1].rows,
-            addPoint: 1
+            addPoint: 1,
+            editPoint: 0
           };
           res.render("map", templateVars);
       })
@@ -92,7 +93,35 @@ module.exports = (db) => {
       res.redirect(`/map/${req.params.id}`);
     }
   });
-
+  // GET points from database, render map with points, show all keyword options on partial
+  router.get("/:id/editpoint", (req, res) => {
+    const loggedInUser= req.session.userId;
+    if (loggedInUser) {
+      const pointsQuery = db.query(`
+      SELECT points.*, maps.title FROM points
+      RIGHT JOIN maps ON maps.id = points.map_id
+      WHERE maps.id = $1;
+      `, [req.params.id]);
+      const keywordsQuery = db.query(`
+      SELECT * FROM keywords
+      ORDER BY word;
+      `);
+      Promise.all([pointsQuery, keywordsQuery])
+        .then(data => {
+          const templateVars = {
+            loggedInUser: loggedInUser,
+            mapObj: data[0].rows[0],
+            keywords: data[1].rows,
+            addPoint: 0,
+            editPoint: 1
+          };
+          res.render("map", templateVars);
+      })
+      .catch(err => console.log(err));
+    } else {
+      res.redirect(`/map/${req.params.id}`);
+    }
+  });
 
   //GET points associated with given map id
   router.get("/:id/points", (req, res) => {
@@ -122,7 +151,8 @@ module.exports = (db) => {
           const templateVars = {
             loggedInUser: req.session.userId,
             mapObj: mapObj,
-            addPoint: 0
+            addPoint: 0,
+            editPoint: 0
           };
           res.render("map", templateVars);
         } else {
@@ -148,7 +178,8 @@ module.exports = (db) => {
             loggedInUser: loggedInUser,
             mapObj: 0,
             map_icons: data.rows,
-            addPoint: 0
+            addPoint: 0,
+            editPoint: 0
           };
           res.render("../views/map", templateVars);
         })
