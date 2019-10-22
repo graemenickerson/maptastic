@@ -4,8 +4,8 @@
   <h2>Edit a point</h3>
     <h3>Select a point to edit</h3>
   <div class="categories">
-    <label for="title">Title</label><br>
-    <input type="text" id='title' name="title" placeholder="Title">
+    <label for="title">Title *</label><br>
+    <input type="text" id='title' name="title" placeholder="Title" minlength="1" maxlength="99" required>
   </div>
   <div class="categories">
     <label for="description">Description</label><br>
@@ -13,11 +13,11 @@
   </div>
   <div class="categories">
     <label for="image">Add a URL with a photo of this location!</label><br>
-    <input type="text" id='image' name="image" placeholder="http://"></textarea>
+    <input type="text" id='image' name="image" placeholder="http://" minlength="1" maxlength="254">
   </div>
   <div class="categories">
-    <label for="category">Select a Category:</label><br>
-      <select id='keywords' name="keywords">
+    <label for="category">Select a Category: *</label><br>
+      <select id='keywords' name="keywords" required>
       <% for (let category of keywords) { %>
         <option id='dropdown' value="<%= category.id %>"> <%= category.word %>
       <% } %>
