@@ -1,5 +1,5 @@
 <!-- _newPoint.ejs -->
-<form class="edit-point" action="/editpoint" method="POST">
+<form class="edit-point" action="/map/<%= mapObj.map_id %>/editpoint" method="POST">
   <h1><%= mapObj.title %></h1>
   <h2>Edit a point</h3>
     <h3>Select a point to edit</h3>
@@ -23,11 +23,8 @@
       <% } %>
         </select>
       </div>
-      <div>
-        <input type='hidden' id='lati' name='lati' value=''>
-        <input type='hidden' id='longi' name='longi' value=''>
-      </div>
+      <input type='hidden' id='pointid' name='pointid' value=''>
   <div>
-    <button type="submit" class="btn btn-primary">Create</button>
+    <button type="submit" class="btn btn-primary">Update Point</button>
   </div>
 </form>

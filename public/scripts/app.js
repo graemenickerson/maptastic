@@ -26,7 +26,7 @@ $(() => {
         L.marker([point.lat, point.long], {icon: point_icon}).addTo(map).bindPopup(`
         <b>${point.title}</b> <br>
         ${point.description} <br>
-        <img src=${point.picture}  max height="150"> <br>
+        <img src=${point.picture}  max width="150" max height="150"> <br>
         `).on("click", function(event) {
           if (myURL[5] == 'editpoint') {
             document.getElementById('title').value = point.title;
@@ -35,6 +35,8 @@ $(() => {
             dropdown = document.getElementById('dropdown')
             dropdown.value = point.keyword_id;
             dropdown.text = point.word;
+            console.log(point)
+            document.getElementById('pointid').value = point.id;
           }
         })
         let markerL = [point.lat, point.long];
@@ -45,8 +47,6 @@ $(() => {
       if (zoom > 14) {
         map.setZoom(14);
       }
-
-
     });
   }
 });

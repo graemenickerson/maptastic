@@ -28,6 +28,25 @@ module.exports = (db) => {
       .catch(err => console.log(err));
   });
 
+  //POST add a new point to specified map
+  router.post("/:id/editpoint", (req,res) => {
+    const values = [req.body.title, req.body.description, req.body.image, req.body.keywords, req.body.pointid]
+    console.log('ASDFASDFSDFASDFDASFDSFD     ->',  req.params.id)
+    const sqlStatment = `
+      UPDATE points SET
+      title = $1,
+      description = $2,
+      picture = $3,
+      keyword_id = $4
+      WHERE points.id = $5
+    `;
+    db.query(sqlStatment,values)
+      .then(returned => {
+        res.redirect(`/map/${req.params.id}`);
+      })
+      .catch(err => console.log(err));
+  });
+
 
   //POST add favorite map to database
   router.post("/:id/favourite", (req, res) => {
@@ -98,7 +117,7 @@ module.exports = (db) => {
     const loggedInUser= req.session.userId;
     if (loggedInUser) {
       const pointsQuery = db.query(`
-      SELECT points.*, maps.title FROM points
+      SELECT points.*, maps.title, maps.id as map_id FROM points
       RIGHT JOIN maps ON maps.id = points.map_id
       WHERE maps.id = $1;
       `, [req.params.id]);
@@ -126,7 +145,7 @@ module.exports = (db) => {
   //GET points associated with given map id
   router.get("/:id/points", (req, res) => {
     db.query(`
-      SELECT * FROM points
+      SELECT points.*, keywords.img_loc, keywords.word FROM points
       JOIN keywords on points.keyword_id = keywords.id
       WHERE map_id = ${req.params.id};`)
       .then(data => {

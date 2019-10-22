@@ -37,6 +37,7 @@
 
             <% if (loggedInUser) { %>
               <a href="/map/<%= mapObj.id %>/addpoint"><button id="addpoint">Add a new point!</button></a>
+              <a href="/map/<%= mapObj.id %>/editpoint"><button id="editpoint">Edit a point!</button></a>
               <form action="/map/<%= mapObj.id %>/favourite" method="POST">
                 <button type="submit" id="favorite">Favorite this map!</button>
               </form>
