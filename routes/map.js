@@ -70,11 +70,14 @@ module.exports = (db) => {
 
   router.get("/:id", (req, res) => {
     db.query(`
-      SELECT maps.*, users.name
+      SELECT maps.*, users.name, COUNT(users_favourites.*) as faved
       FROM maps JOIN users ON maps.owner_id = users.id
-      WHERE maps.id = $1;
+      JOIN users_favourites ON maps.id = map_id
+      WHERE maps.id = $1
+      GROUP BY maps.id, users.name;
     `, [req.params.id])
       .then(data => {
+        console.log(data.rows[0]);
         const templateVars = {
           loggedInUser: req.session.userId,
           mapObj: data.rows[0],
@@ -84,6 +87,7 @@ module.exports = (db) => {
       })
       .catch(err => console.log(err));
   });
+
 
   router.get("/:id/points", (req, res) => {
     db.query(`

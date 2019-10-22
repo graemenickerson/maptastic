@@ -34,6 +34,7 @@
             <p>To see details, click on a point</p>
             <a href="/map/<%= mapObj.id %>/addpoint"><button id="addpoint">Add a new point!</button></a>
             <a href="#"><button id="favorite">Favorite this map!</button></a>
+            <h2>Favourite Count: <%= mapObj.faved %></h2>
           <% } else { %>
             <% include ./partials/_newMap %>
           <% } %>
