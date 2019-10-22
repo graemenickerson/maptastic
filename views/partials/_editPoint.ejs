@@ -28,3 +28,8 @@
     <button type="submit" class="btn btn-primary">Update Point</button>
   </div>
 </form>
+
+<form action="/map/<%= mapObj.map_id %>/deletepoint" method="POST">
+  <input type='hidden' id='deletepointid' name='deletepointid' value=''>
+  <button type="submit" id="delete">SAY GOODBYE FOREVER</button>
+</form>

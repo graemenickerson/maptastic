@@ -31,7 +31,6 @@ module.exports = (db) => {
   //POST add a new point to specified map
   router.post("/:id/editpoint", (req,res) => {
     const values = [req.body.title, req.body.description, req.body.image, req.body.keywords, req.body.pointid]
-    console.log('ASDFASDFSDFASDFDASFDSFD     ->',  req.params.id)
     const sqlStatment = `
       UPDATE points SET
       title = $1,
@@ -47,6 +46,20 @@ module.exports = (db) => {
       .catch(err => console.log(err));
   });
 
+  router.post("/:id/deletepoint", (req,res) => {
+    const values = [req.body.deletepointid]
+    console.log(values);
+    const sqlStatment = `
+      UPDATE points SET
+      active = false
+      WHERE points.id = $1
+    `;
+    db.query(sqlStatment,values)
+      .then(returned => {
+        res.redirect(`/map/${req.params.id}`);
+      })
+      .catch(err => console.log(err));
+  });
 
   //POST add favorite map to database
   router.post("/:id/favourite", (req, res) => {

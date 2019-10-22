@@ -11,5 +11,6 @@ CREATE TABLE points (
   picture VARCHAR(255) DEFAULT 'https://cdn1.vectorstock.com/i/1000x1000/48/70/cityline-vector-21554870.jpg',
   lat DOUBLE PRECISION,
   long DOUBLE PRECISION,
-  keyword_id INTEGER REFERENCES keywords(id) ON DELETE CASCADE
+  keyword_id INTEGER REFERENCES keywords(id) ON DELETE CASCADE,
+  active BOOLEAN DEFAULT true
 );
