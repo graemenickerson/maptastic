@@ -33,7 +33,9 @@
             <h4>Created By: <a href="/users/<%= mapObj.owner_id %>"><%= mapObj.name %></a></h4>
             <p>To see details, click on a point</p>
             <a href="/map/<%= mapObj.id %>/addpoint"><button id="addpoint">Add a new point!</button></a>
-            <a href="#"><button id="favorite">Favorite this map!</button></a>
+            <form action="/map/<%= mapObj.id %>/favourite" method="POST">
+              <button type="submit" id="favorite">Favorite this map!</button>
+            </form>
             <h2>Favourite Count: <%= mapObj.faved %></h2>
           <% } else { %>
             <% include ./partials/_newMap %>
@@ -50,5 +52,6 @@
   <% if(addPoint) { %>
     <script type="text/javascript" src="/scripts/add_point.js"></script>
   <% } %>
+    <!-- <script type="text/javascript" src="/scripts/favourite.js"></script> -->
   </body>
 </html>

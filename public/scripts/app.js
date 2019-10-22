@@ -8,7 +8,7 @@ $(() => {
   if (myURL[3] === 'map') {
     myId = myURL[4];
   }
-  if (myId && myId !== 'map' && myId !== 'addpoint') {
+  if (myId && myId !== 'map' && myId !== 'addpoint' && myId !== 'favourite') {
     $.ajax({
       method: "GET",
       url: `/map/${myId}/points`

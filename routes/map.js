@@ -43,6 +43,19 @@ module.exports = (db) => {
       .catch(err => console.log(err));
   });
 
+  router.post("/:id/favourite", (req, res) => {
+    const values = [req.session.userId, req.params.id];
+    const sqlStatement = `
+    INSERT INTO users_favourites (user_id, map_id)
+    VALUES ($1, $2);
+    `;
+    db.query(sqlStatement, values)
+      .then( data => {
+        res.redirect(`/map/${req.params.id}`);
+      })
+      .catch(err => console.log(err));
+  });
+
   router.get("/:id/addpoint", (req, res) => {
     const pointsQuery = db.query(`
     SELECT points.*, maps.title FROM points
