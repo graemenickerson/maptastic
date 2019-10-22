@@ -19,7 +19,8 @@ module.exports = (db) => {
       const templateVars = {
         loggedInUser: req.session.userId,
         mapObj: 0,
-        map_icons: data.rows
+        map_icons: data.rows,
+        addPoint: 0
       }
       console.log(data.rows)
       res.render("../views/map", templateVars)
@@ -42,6 +43,24 @@ module.exports = (db) => {
       .catch(err => console.log(err));
   });
 
+  router.get("/:id/addpoint", (req, res) => {
+    db.query(`
+    SELECT * FROM points
+    JOIN keywords on points.keyword_id = keywords.id
+    WHERE map_id = $1
+    `, [req.params.id])
+    .then(data => {
+
+      const templateVars = {
+        loggedInUser: req.session.userId,
+        mapObj: data.rows[0],
+        addPoint: 1
+      }
+      res.render("map", templateVars);
+    })
+    .catch(err => console.log(err));
+  });
+
   router.get("/:id", (req, res) => {
     db.query(`
       SELECT maps.*, users.name
@@ -51,12 +70,12 @@ module.exports = (db) => {
     .then(data => {
       const templateVars = {
         loggedInUser: req.session.userId,
-        mapObj: data.rows[0]
+        mapObj: data.rows[0],
+        addPoint: 0
       }
       res.render("map", templateVars);
     })
     .catch(err => console.log(err));
-
   })
 
   router.get("/:id/points", (req, res) => {
@@ -70,5 +89,9 @@ module.exports = (db) => {
     })
     .catch(err => console.log(err));
   });
+
+
   return router;
 };
+
+

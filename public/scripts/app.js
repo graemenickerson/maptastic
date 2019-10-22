@@ -1,10 +1,11 @@
 $(() => {
 
   let myURL = window.location.href.split("/");
-  const myId = myURL[myURL.length -1];
-
-  if (myId && myId !== 'map') {
-    console.log(myId);
+  let myId;
+  if (myURL[3] === 'map') {
+    myId = myURL[4];
+  }
+  if (myId && myId !== 'map' && myId !== 'addpoint') {
     $.ajax({
       method: "GET",
       url: `/map/${myId}/points`
