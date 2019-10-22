@@ -4,8 +4,8 @@
   <h2>Add a new point</h3>
     <h3>Select a spot on the map and then fill out this form! </h3>
   <div class="categories">
-    <label for="title">Title</label><br>
-    <input type="text" name="title" placeholder="Title" minlength="1" maxlength="256">
+    <label for="title">Title *</label><br>
+    <input type="text" name="title" placeholder="Title" minlength="1" maxlength="254"required>
   </div>
   <div class="categories">
     <label for="description">Description</label><br>
@@ -13,11 +13,11 @@
   </div>
   <div class="categories">
     <label for="image">Add a URL with a photo of this location!</label><br>
-    <input type="text" name="image" placeholder="http://" maxlength="256">
+    <input type="text" name="image" placeholder="http://" maxlength="254">
   </div>
   <div class="categories">
-    <label for="category">Select a Category:</label><br>
-      <select name="keywords">
+    <label for="category">Select a Category: *</label><br>
+      <select name="keywords"required>
       <% for (let category of keywords) { %>
         <option value="<%= category.id %>"> <%= category.word %>
       <% } %>
