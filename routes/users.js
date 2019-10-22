@@ -35,21 +35,25 @@ module.exports = (db) => {
 
   router.get("/:id/maps", (req, res) => {
     const myMaps = db.query(`
-    SELECT maps.id, maps.title FROM maps
+    SELECT maps.id, maps.title, map_icons.icon FROM maps
+    JOIN map_icons ON maps.icon_id = map_icons.id
     WHERE owner_id = $1;
     `, [req.params.id]);
 
     const myFaves = db.query(`
-    SELECT maps.id, maps.title FROM maps
+    SELECT maps.id, maps.title, map_icons.icon FROM maps
+    JOIN map_icons ON maps.icon_id = map_icons.id
     JOIN users_favourites ON maps.id = map_id
     WHERE users_favourites.user_id = $1;
     `, [req.params.id]);
 
     const myContributions = db.query(`
-    SELECT maps.id, maps.title FROM maps
+    SELECT maps.id, maps.title, map_icons.icon FROM maps
+    JOIN map_icons ON maps.icon_id = map_icons.id
     JOIN  map_contributors ON maps.id = map_id
     WHERE map_contributors.contributor_id = $1;
     `, [req.params.id]);
+
 
     Promise.all([myMaps, myFaves, myContributions])
     .then(data => {
