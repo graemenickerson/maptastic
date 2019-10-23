@@ -12,7 +12,8 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  flex-wrap: wrap;
+  // flex-wrap: wrap;
+  overflow-x: auto;
 
   span {
     margin-left: 50px;
@@ -25,6 +26,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex-shrink: 0;
     a{
       text-align: center;
       text-decoration: none;
