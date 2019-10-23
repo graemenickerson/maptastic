@@ -15,8 +15,9 @@ $(() => {
   const mapInd = myURL.indexOf("map");
   const mapId = myURL[mapInd + 1];
   let editMode = 0;
+
   //if the url has the id followed by "edit point"
-  if (myURL[mapId + 1] === 'editpoint') {
+  if (myURL[mapInd + 2] === 'editpoint') {
     editMode = 1;
   }
   //if the map already has an ID (not currently being created)
@@ -44,6 +45,8 @@ $(() => {
           `).on("click", function(event) {
             //on click, if in edit mode, fill out the edit form with the values from that marker
             if (editMode) {
+              console.log(editMode)
+              console.log("*********")
               document.getElementById('title').value = point.title;
               document.getElementById('description').value = point.description;
               document.getElementById('image').value = point.picture;
