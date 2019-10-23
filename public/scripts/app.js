@@ -38,8 +38,8 @@ $(() => {
           });
           //add the marker to the map with info from the database in the popup
           L.marker([point.lat, point.long], {icon: point_icon}).addTo(map).bindPopup(`
-          <b>${point.title}</b> <br>
-          ${point.description} <br>
+          <h1>${point.title}</h1>
+          <h4>${point.description}</h4>
           <img src=${point.picture}  max width="150" max height="150"> <br>
           <i>created by: ${point.user_name}</i>
           `).on("click", function(event) {

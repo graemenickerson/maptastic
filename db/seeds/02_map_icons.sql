@@ -5,7 +5,7 @@ VALUES
 ('/images/map_icons/passport.png', 'Travel Spots'),
 ('/images/map_icons/film.png', 'Film Locations'),
 ('/images/map_icons/nature.png', 'Nature'),
-('/images/map_icons/drink.png', 'Cocktails'),
+('/images/map_icons/martini.png', 'Cocktails'),
 ('/images/map_icons/restaurant.png', 'Restaurants'),
 ('/images/map_icons/house.png', 'My Neighborhood');
 

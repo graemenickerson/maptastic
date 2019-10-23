@@ -30,3 +30,14 @@ body {
   }
 }
 
+.leaflet-popup-content-wrapper {
+  color: $text-title;
+  font-family: 'Cabin', sans-serif;
+  h1, h4 {
+    margin: 1px;
+  }
+  img {
+    padding: 3px;
+  }
+}
+
