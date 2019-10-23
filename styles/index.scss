@@ -1,6 +1,6 @@
-$primary-color: #222f3e;
-$secondary-color: #fce2e1;
-$background-color: #F5EDE0;
+// index.scss
+
+@import "partials/_variables.scss";
 
 body {
   background-color:$background-color;
@@ -28,7 +28,7 @@ div.map-thumbnail {
   justify-content: center;
   align-items:center;
   margin: 15px;
-  border-radius: 25px;
+  border-radius: 10px;
 
   h1 {
     text-align: center;

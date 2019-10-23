@@ -1,11 +1,6 @@
+// nav.scss
 
-
-$primary-color: #436f8e;
-$secondary-color: #3a5f79;
-$background-color:  #f5ede0;
-$dropdown-color: #e2d5c2;
-$text-primary: #ffffff;
-$text-secondary: #2e2c28;
+@import "partials/_variables.scss";
 
 #nav-bar {
   left: 0;

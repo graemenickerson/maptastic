@@ -1,12 +1,7 @@
 // See: https://sass-lang.com/
 
+@import "partials/_variables.scss";
 
-$primary-color: #436f8e;
-$secondary-color: #3a5f79;
-$background-color:  #f5ede0;
-$dropdown-color: #e2d5c2;
-$text-primary: #ffffff;
-$text-secondary: #2e2c28;
 
 body {
   margin: 0;
@@ -26,63 +21,8 @@ body {
     height: 100%;
     width: 25%;
     background-color: $background-color;
+    color: $secondary-color;
     font-family: 'Cabin', sans-serif;
-    &:hover {
-      background-color: $background-color;
-    }
-    h1 {
-      margin: 5px;
-      color: $secondary-color;
-    }
-    h3 {
-      margin: 5px;
-      color: $secondary-color;
-    }
-    h4 {
-      margin: 5px;
-      color: $secondary-color;
-      a {
-        color: $secondary-color;
-        text-decoration: none;
-        text-decoration-line: underline;
-      }
-    }
-    p {
-      margin: 5px;
-      margin-top: 20px;
-      margin-bottom: 20px;
-      color: $secondary-color;
-    }
-    div {
-      margin: 10px;
-      margin-top: 0px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      button {
-        background-color: $primary-color;
-        color: $text-primary;
-        font-family: 'Cabin', sans-serif;
-        font-size: 15px;
-        border-radius: 5px;
-        height: 40px;
-        // width: 60px;
-        margin-bottom: 7px;
-        padding: 5px;
-        &:hover {
-          background-color: $secondary-color;
-        }
-      }
-      #favs {
-        margin-top: 20px;
-        margin-left: 0;
-        flex-direction: row;
-        align-items: center;
-        button {
-          height: 30px;
-        }
-      }
-    }
   }
   #mapid {
     z-index: 0;

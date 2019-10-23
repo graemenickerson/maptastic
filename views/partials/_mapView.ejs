@@ -1,0 +1,22 @@
+<!-- mapView.ejs -->
+
+<div id="map-view">
+    <h1><%= mapObj.title %></h1>
+    <h3><%= mapObj.description %></h3>
+    <h4>Created By: <a href="/users/<%= mapObj.owner_id %>"><%= mapObj.name %></a></h4>
+    <p>To see details, click on a point</p>
+    <% if (loggedInUser) { %>
+      <div>
+        <a href="/map/<%= mapObj.id %>/addpoint"><button id="addpoint">Add a new point!</button></a>
+        <a href="/map/<%= mapObj.id %>/editpoint"><button id="editpoint">Edit a point!</button></a>
+        <div id="favs">
+          <h3 ><%= mapObj.faved %>  </h3>
+          <form action="/map/<%= mapObj.id %>/favourite" method="POST">
+            <button type="submit" id="favorite">+ ♡</button>
+          </form>
+        </div>
+      </div>
+    <%} else {%>
+      <h3>Favourite Count: <%= mapObj.faved %></h3>
+    <% } %>
+</div>

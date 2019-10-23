@@ -13,12 +13,12 @@
   </div>
   <div class="new-cat">
     <label for="category">Select a Category: * </label>
-      <% for (let category of map_icons) { %>
-        <div>
-          <input type="radio" id="catRadio-<%= category.id %>" name="catRadio" value="<%= category.id %>"required></input>
-          <label for="catRadio-<%= category.id %>"><%= category.name %></label>
-        </div>
-      <% } %>
+    <% for (let category of map_icons) { %>
+      <div>
+        <input type="radio" id="catRadio-<%= category.id %>" name="catRadio" value="<%= category.id %>"required></input>
+        <label for="catRadio-<%= category.id %>"><%= category.name %></label>
+      </div>
+    <% } %>
   </div>
   <input type='hidden' name='centerlat' id='centerlat'>
   <input type='hidden' name='centerlong' id='centerlong'>

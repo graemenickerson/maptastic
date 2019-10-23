@@ -1,12 +1,6 @@
+// new-map-form.scss
 
-
-$primary-color: #436f8e;
-$secondary-color: #3a5f79;
-$background-color:  #f5ede0;
-$dropdown-color: #e2d5c2;
-$text-primary: #ffffff;
-$text-secondary: #413e38;
-
+@import "partials/_variables.scss";
 
 .new-map {
   padding: 5px;
@@ -56,6 +50,8 @@ $text-secondary: #413e38;
     margin-top: 10px;
     div {
       margin-top: 5px;
+      flex-direction: row;
+      align-items: center;
       input {
         -webkit-appearance: none;
         -moz-appearance: none;
@@ -67,7 +63,6 @@ $text-secondary: #413e38;
         transition: 0.2s all linear;
         margin-right: 5px;
         position: relative;
-        top: 4px;
         &:checked {
           border: 6px solid $secondary-color;
         }
