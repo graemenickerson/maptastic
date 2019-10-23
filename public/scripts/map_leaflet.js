@@ -1,10 +1,8 @@
 // map_leaflet.js
-
-let coords;
-let zoom;
-
-coords = [48.440200, -123.360000]
-zoom =  13
+let zoom =  13;
+let lat = 48.440200;
+let long =  -123.360000;
+let coords = [lat, long];
 
 let map = L.map('mapid').setView(coords, zoom);
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
