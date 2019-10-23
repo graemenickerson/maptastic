@@ -40,7 +40,7 @@ $(() => {
           L.marker([point.lat, point.long], {icon: point_icon}).addTo(map).bindPopup(`
           <h1>${point.title}</h1>
           <h4>${point.description}</h4>
-          <img src=${point.picture}  max width="150" max height="150"> <br>
+          <img src=${point.picture}  width="150" height="150"> <br>
           <i>created by: ${point.user_name}</i>
           `).on("click", function(event) {
             //on click, if in edit mode, fill out the edit form with the values from that marker

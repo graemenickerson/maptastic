@@ -8,7 +8,7 @@ CREATE TABLE points (
   map_id INTEGER REFERENCES maps(id) ON DELETE CASCADE,
   title VARCHAR(255) NOT NULL DEFAULT 'point',
   description text,
-  picture VARCHAR(255) DEFAULT 'https://cdn1.vectorstock.com/i/1000x1000/48/70/cityline-vector-21554870.jpg',
+  picture VARCHAR(255),
   lat DOUBLE PRECISION,
   long DOUBLE PRECISION,
   keyword_id INTEGER REFERENCES keywords(id) ON DELETE CASCADE,
