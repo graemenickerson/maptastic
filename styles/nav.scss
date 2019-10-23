@@ -1,10 +1,11 @@
 
 
-$primary-color: #184549;
-$secondary-color: #2e86de;
-$background-color: lightgrey;
+$primary-color: #436f8e;
+$secondary-color: #3a5f79;
+$background-color:  #f5ede0;
+$dropdown-color: #e2d5c2;
 $text-primary: #ffffff;
-$text-secondary: #545149;
+$text-secondary: #2e2c28;
 
 #nav-bar {
   left: 0;
@@ -22,7 +23,6 @@ $text-secondary: #545149;
   background-color: $primary-color;
   font-family: sans-serif;
   #brand {
-    // font-family: 'Covered By Your Grace', sans-serif;
     font-family: 'Cabin Sketch', sans-serif;
     font-size: 40px;
     text-decoration: none;
@@ -34,11 +34,10 @@ $text-secondary: #545149;
     color: $text-primary;
     height: 30px;
     font-size: 15px;
-    font-family: sans-serif;
+    font-family: 'Cabin', sans-serif;
     &:hover {
-      background-color: $background-color;
+      background-color: $secondary-color;
       border-radius: 10px;
-      color: $text-secondary;
     }
   }
 }
@@ -58,14 +57,12 @@ $text-secondary: #545149;
   h2 {
     font-weight: lighter;
     color: $text-secondary;
-
   }
-
 }
 
 /* Dropdown Button */
 .dropbtn {
-  font-size: 16px;
+  font-size: 15px;
   border: none;
   cursor: pointer;
 }
@@ -85,8 +82,9 @@ $text-secondary: #545149;
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: $secondary-color;
+  background-color: $background-color;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  border-radius: 10px;
   z-index: 1;
 }
 
@@ -99,7 +97,10 @@ $text-secondary: #545149;
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #ddd}
+.dropdown-content a:hover {
+  background-color: $dropdown-color;
+  border-radius: 10px;
+}
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
