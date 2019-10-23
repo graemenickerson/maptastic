@@ -27,6 +27,9 @@ $text-secondary: #2e2c28;
     font-size: 40px;
     text-decoration: none;
     color: $text-primary;
+    &:focus {
+      outline: none;
+    }
   }
   button {
     background-color:transparent;
@@ -39,16 +42,17 @@ $text-secondary: #2e2c28;
       background-color: $secondary-color;
       border-radius: 10px;
     }
+    &:focus {
+      outline: none;
+    }
   }
 }
-
 #logged-in {
   display: flex;
   flex-direction: row;
   justify-content: end;
   align-items: center;
 }
-
 #not-logged-in {
   display: flex;
   flex-direction: row;
@@ -59,25 +63,21 @@ $text-secondary: #2e2c28;
     color: $text-secondary;
   }
 }
-
 /* Dropdown Button */
 .dropbtn {
   font-size: 15px;
   border: none;
   cursor: pointer;
 }
-
 /* Dropdown button on hover & focus */
 .dropbtn:hover, .dropbtn:focus {
   background-color: $secondary-color;
 }
-
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
   position: relative;
   display: inline-block;
 }
-
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
   display: none;
@@ -87,7 +87,6 @@ $text-secondary: #2e2c28;
   border-radius: 10px;
   z-index: 1;
 }
-
 /* Links inside the dropdown */
 .dropdown-content a {
   color: $text-secondary;
@@ -95,12 +94,10 @@ $text-secondary: #2e2c28;
   text-decoration: none;
   display: block;
 }
-
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {
   background-color: $dropdown-color;
   border-radius: 10px;
 }
-
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
