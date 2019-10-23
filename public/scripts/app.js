@@ -46,14 +46,21 @@ $(() => {
           markers.push(markerL);
         }
       }
-
-
-      map.fitBounds(markers);
-      zoom = map.getZoom();
-      if (zoom > 14) {
-        map.setZoom(14);
+      if (markers.length > 0) {
+        map.fitBounds(markers);
+        zoom = map.getZoom();
+        if (zoom > 14) {
+          map.setZoom(14);
+        }
       }
     });
+  } else {
+    map.on("moveend", function() {
+      document.getElementById('centerlat').value = map.getCenter()['lat'];
+      document.getElementById('centerlong').value = map.getCenter()['lng'];
+      document.getElementById('zoom').value =  map.getZoom();
+    })
+
   }
 });
 

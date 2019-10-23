@@ -1,7 +1,16 @@
 // map_leaflet.js
 
-let map = L.map('mapid').setView([48.440200, -123.360000], 13);
-
+let coords;
+let zoom;
+if (document.getElementById('maplat')) {
+  coords = [document.getElementById('maplat').value, document.getElementById('maplong').value]
+  zoom   = document.getElementById('mapzoom').value
+} else {
+  coords = [48.440200, -123.360000]
+  zoom =  13
+}
+let map = L.map('mapid').setView(coords, zoom);
+console.log(map.getZoom());
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
   maxZoom: 18,
   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +

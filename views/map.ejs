@@ -25,6 +25,11 @@
     <main>
       <div class="main-map">
         <div class="sidebar">
+            <% if (mapObj) { %>
+              <input type='hidden' id='maplat'  name='maplat' value=<%= mapObj.center_lat %>>
+              <input type='hidden' id='maplong'  name='maplong' value=<%= mapObj.center_long %>>
+              <input type='hidden' id='mapzoom'  name='mapzoom' value=<%= mapObj.zoom %>>
+              <%} %>
           <% if (addPoint) { %>
             <% include ./partials/_newPoint %>
           <% } else if (editPoint) { %>
@@ -34,7 +39,6 @@
             <h3><%= mapObj.description %></h3>
             <h4>Created By: <a href="/users/<%= mapObj.owner_id %>"><%= mapObj.name %></a></h4>
             <p>To see details, click on a point</p>
-
             <% if (loggedInUser) { %>
               <a href="/map/<%= mapObj.id %>/addpoint"><button id="addpoint">Add a new point!</button></a>
               <a href="/map/<%= mapObj.id %>/editpoint"><button id="editpoint">Edit a point!</button></a>

@@ -82,10 +82,12 @@ module.exports = (db) => {
 
   //POST add new map to database
   router.post("/", (req,res) => {
-    const values = [req.session.userId, req.body.catRadio, req.body.title, req.body.description];
+    lat = req.body.centerlat
+    long = req.body.centerlong
+    const values = [req.session.userId, req.body.catRadio, req.body.title, req.body.description, lat, long, req.body.zoom];
     const sqlStatment = `
-      INSERT INTO maps (owner_id, icon_id, date_created, title, description)
-      VALUES ($1, $2, NOW(), $3, $4)
+      INSERT INTO maps (owner_id, icon_id, date_created, title, description, center_lat, center_long, zoom)
+      VALUES ($1, $2, NOW(), $3, $4, $5, $6, $7)
       RETURNING *;
     `;
     db.query(sqlStatment,values)
@@ -105,7 +107,7 @@ module.exports = (db) => {
     const loggedInUser= req.session.userId;
     if (loggedInUser) {
       const pointsQuery = db.query(`
-      SELECT points.*, maps.title FROM points
+      SELECT points.*, maps.title, maps.center_lat, maps.center_long, maps.zoom FROM points
       RIGHT JOIN maps ON maps.id = points.map_id
       WHERE maps.id = $1;
       `, [req.params.id]);
