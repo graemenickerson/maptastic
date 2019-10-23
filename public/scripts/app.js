@@ -45,8 +45,6 @@ $(() => {
           `).on("click", function(event) {
             //on click, if in edit mode, fill out the edit form with the values from that marker
             if (editMode) {
-              console.log(editMode)
-              console.log("*********")
               document.getElementById('title').value = point.title;
               document.getElementById('description').value = point.description;
               document.getElementById('image').value = point.picture;
