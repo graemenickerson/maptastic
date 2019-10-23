@@ -26,29 +26,32 @@
     <main>
       <div class="main-map">
         <div class="sidebar">
-            <% if (mapObj) { %>
+          <% if (mapObj) { %>
               <input type='hidden' id='maplat'  name='maplat' value=<%= mapObj.center_lat %>>
               <input type='hidden' id='maplong'  name='maplong' value=<%= mapObj.center_long %>>
               <input type='hidden' id='mapzoom'  name='mapzoom' value=<%= mapObj.zoom %>>
-              <%} %>
-          <% if (addPoint) { %>
-            <% include ./partials/_newPoint %>
-          <% } else if (editPoint) { %>
-            <% include ./partials/_editPoint %>
-          <% } else if (mapObj) { %>
-            <h1><%= mapObj.title %></h1>
-            <h3><%= mapObj.description %></h3>
-            <h4>Created By: <a href="/users/<%= mapObj.owner_id %>"><%= mapObj.name %></a></h4>
-            <p>To see details, click on a point</p>
-            <% if (loggedInUser) { %>
-              <a href="/map/<%= mapObj.id %>/addpoint"><button id="addpoint">Add a new point!</button></a>
-              <a href="/map/<%= mapObj.id %>/editpoint"><button id="editpoint">Edit a point!</button></a>
-              <form action="/map/<%= mapObj.id %>/favourite" method="POST">
-                <button type="submit" id="favorite">Favorite this map!</button>
-              </form>
-            <%} %>
+            <% if (addPoint) { %>
+              <% include ./partials/_newPoint %>
+            <% } else if (editPoint) { %>
+              <% console.log("sasdfadsadsfdsajfldksjsldf") %>
+              <% console.log(mapObj.center_lat) %>
+              <% include ./partials/_editPoint %>
 
-            <h2>Favourite Count: <%= mapObj.faved %></h2>
+
+            <% } else { %>
+              <h1><%= mapObj.title %></h1>
+              <h3><%= mapObj.description %></h3>
+              <h4>Created By: <a href="/users/<%= mapObj.owner_id %>"><%= mapObj.name %></a></h4>
+              <p>To see details, click on a point</p>
+              <% if (loggedInUser) { %>
+                <a href="/map/<%= mapObj.id %>/addpoint"><button id="addpoint">Add a new point!</button></a>
+                <a href="/map/<%= mapObj.id %>/editpoint"><button id="editpoint">Edit a point!</button></a>
+                <form action="/map/<%= mapObj.id %>/favourite" method="POST">
+                  <button type="submit" id="favorite">Favorite this map!</button>
+                </form>
+              <%} %>
+              <h2>Favourite Count: <%= mapObj.faved %></h2>
+          <%} %>
           <% } else { %>
             <% include ./partials/_newMap %>
           <% } %>

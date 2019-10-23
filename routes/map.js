@@ -137,7 +137,7 @@ module.exports = (db) => {
     const loggedInUser= req.session.userId;
     if (loggedInUser) {
       const pointsQuery = db.query(`
-      SELECT points.*, maps.title, maps.id as map_id FROM points
+      SELECT points.*, maps.title, maps.id as map_id, maps.center_lat, maps.center_long, maps.zoom FROM points
       RIGHT JOIN maps ON maps.id = points.map_id
       WHERE maps.id = $1;
       `, [req.params.id]);
