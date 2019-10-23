@@ -3,17 +3,17 @@
   <h1><%= mapObj.title %></h1>
   <h2>Edit a point</h3>
     <h3>Select a point to edit</h3>
-  <div class="categories">
+  <div class="title">
     <label for="title">Title *</label><br>
-    <input type="text" id='title' name="title" placeholder="Title" minlength="1" maxlength="99" required>
+    <input type="text" id='title' name="title" placeholder="Title" minlength="1" maxlength="99" size="52"required>
   </div>
-  <div class="categories">
+  <div class="description">
     <label for="description">Description</label><br>
-    <textarea rows="4" cols="30" id='description' name="description" placeholder="Describe your point..."></textarea>
+    <textarea rows="4" cols="50" id='description' name="description" placeholder="Describe your point..."></textarea>
   </div>
-  <div class="categories">
+  <div class="image">
     <label for="image">Add a URL with a photo of this location!</label><br>
-    <input type="text" id='image' name="image" placeholder="http://" minlength="1" maxlength="254">
+    <input type="text" id='image' name="image" placeholder="http://" minlength="1" maxlength="254" size="52">
   </div>
   <div class="categories">
     <label for="category">Select a Category: *</label><br>
@@ -29,7 +29,7 @@
   </div>
 </form>
 
-<form action="/map/<%= mapObj.map_id %>/deletepoint" method="POST">
+<form class="delete-point" action="/map/<%= mapObj.map_id %>/deletepoint" method="POST">
   <input type='hidden' id='deletepointid' name='deletepointid' value=''>
-  <button type="submit" id="delete">SAY GOODBYE FOREVER</button>
+  <button type="submit" id="delete">Delete Point</button>
 </form>
