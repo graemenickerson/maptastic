@@ -15,13 +15,12 @@ body {
   height: 87.5vh;
 
   .sidebar {
-    display: flex;
-    flex-flow: column;
-    align-items: flex-start;
     height: 100%;
     width: 25%;
     background-color: $background-color;
     font-family: 'Cabin', sans-serif;
+    display: flex;
+    flex-direction: column;
   }
   #mapid {
     z-index: 0;
