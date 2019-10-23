@@ -5,7 +5,7 @@
 body {
   background-image: url('../images/worldbg.jpg');
   h1 {
-    color: $text-secondary;
+    color: $text-title;
   }
 }
 
@@ -36,7 +36,7 @@ div.map-thumbnail {
 
     a{
       text-decoration: none;
-      color: $text-secondary;
+      color: $text-title;
     }
 
   }
