@@ -1,7 +1,15 @@
 // See: https://sass-lang.com/
 
+
+$primary-color: #184549;
+$secondary-color: #2e86de;
+$background-color: lightgrey;
+$text-primary: #ffffff;
+$text-secondary: #545149;
+
 body {
   margin: 0;
+  background-color: $background-color;
 }
 .main-map {
   display: flex;
@@ -12,7 +20,7 @@ body {
   .sidebar {
     height: 100%;
     width: 25%;
-    background-color: lightgrey;
+    background-color: $background-color;
   }
   #mapid {
     height: 100%;
