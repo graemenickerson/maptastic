@@ -16,9 +16,9 @@
     <div class = "map-row">
       <% for(const map of mapsArr) {%>
         <div class = "map-thumbnail">
-        <h1><a href="map/<%= map.id %>"><%= map.title %></a></h1>
-        <a href= "map/<%= map.id %>"><img src="<%= map.icon%>"></a>
-
+          <h1><a href="map/<%= map.id %>"><%= map.title %></a></h1>
+          <a href= "map/<%= map.id %>"><img src="<%= map.icon%>"></a>
+          <div class='heart'><%= map.fave_count%> ♡</div>
       </div>
       <%} %>
     </div>
