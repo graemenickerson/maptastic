@@ -5,15 +5,75 @@
 .add-point {
   h1 {
     margin: 5px;
-    color: $secondary-color;
+    color: $text-title;
   }
   h2 {
     margin: 5px;
-    color: $secondary-color;
+    color: $text-title;
   }
   h3 {
     margin: 5px;
-    color: $secondary-color;
+    color: $text-title;
   }
-
+  .title{
+    margin: 5px;
+    color: $text-title;
+    input {
+      border: transparent;
+      border-radius: 5px;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  .description {
+    margin: 5px;
+    color: $text-title;
+    textarea {
+      border: transparent;
+      border-radius: 5px;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  .image {
+    margin: 5px;
+    color: $text-title;
+    input {
+      border: transparent;
+      border-radius: 5px;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  .categories{
+    margin: 5px;
+    color: $text-title;
+    select {
+      border-color: transparent;
+      background-size: contain;
+      height: 30px;
+      width: 270px;
+      &:focus {
+        outline: none;
+      }
+   }
+  }
+  button {
+    background-color: $primary-color;
+    color: $text-primary;
+    font-family: 'Cabin', sans-serif;
+    font-size: 15px;
+    border-radius: 10px;
+    height: 30px;
+    width: 60px;
+    margin: 10px;
+    margin-left: 80%;
+    padding: 5px;
+    &:hover {
+      background-color: $secondary-color;
+    }
+  }
 }
