@@ -46,11 +46,20 @@ $(() => {
           markers.push(markerL);
         }
       }
-      if (markers.length > 0) {
+
+      let coords;
+      let zoom;
+      if (document.getElementById('maplat') && markers.length < 2) {
+        coords = [document.getElementById('maplat').value, document.getElementById('maplong').value];
+        zoom   = document.getElementById('mapzoom').value;
+        map.setView(coords, zoom);
+      } else {
         map.fitBounds(markers);
         zoom = map.getZoom();
         if (zoom > 14) {
           map.setZoom(14);
+        } else {
+
         }
       }
     });
