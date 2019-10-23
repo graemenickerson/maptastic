@@ -16,7 +16,7 @@
   align-items: center;
   color: $text-primary;
   background-color: $primary-color;
-  font-family: sans-serif;
+  font-family: 'Cabin', sans-serif;
   #brand {
     font-family: 'Cabin Sketch', sans-serif;
     font-size: 40px;
@@ -55,7 +55,15 @@
   align-items: center;
   h2 {
     font-weight: lighter;
-    color: $text-secondary;
+    color: $text-primary;
+  }
+  input.login-form {
+    border-radius: 5px;
+    border-color: transparent;
+    color: $text-title;
+    &:focus {
+      outline: none;
+    }
   }
 }
 /* Dropdown Button */
