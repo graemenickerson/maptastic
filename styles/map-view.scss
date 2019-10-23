@@ -5,17 +5,17 @@
 #map-view {
   h1 {
     margin: 5px;
-    color: $secondary-color;
+    color: $text-title;
   }
   h3 {
     margin: 5px;
-    color: $secondary-color;
+    color: $text-title;
   }
   h4 {
     margin: 5px;
-    color: $secondary-color;
+    color: $text-title;
     a {
-      color: $secondary-color;
+      color: $text-title;
       text-decoration: none;
       text-decoration-line: underline;
     }
@@ -24,7 +24,7 @@
     margin: 5px;
     margin-top: 20px;
     margin-bottom: 20px;
-    color: $secondary-color;
+    color: $text-title;
   }
   div {
     margin: 10px;
@@ -33,17 +33,19 @@
     flex-direction: column;
     justify-content: flex-start;
     button {
-      background-color: $primary-color;
+      background-color: $secondary-color;
       color: $text-primary;
       font-family: 'Cabin', sans-serif;
       font-size: 15px;
       border-radius: 5px;
       height: 40px;
-      // width: 60px;
       margin-bottom: 7px;
       padding: 5px;
       &:hover {
         background-color: $secondary-color;
+      }
+      &:focus {
+        outline: none;
       }
     }
     #favs {
@@ -53,6 +55,9 @@
       align-items: center;
       button {
         height: 30px;
+        &:focus {
+          outline: none;
+        }
       }
     }
   }
