@@ -33,11 +33,7 @@
             <% if (addPoint) { %>
               <% include ./partials/_newPoint %>
             <% } else if (editPoint) { %>
-              <% console.log("sasdfadsadsfdsajfldksjsldf") %>
-              <% console.log(mapObj.center_lat) %>
               <% include ./partials/_editPoint %>
-
-
             <% } else { %>
               <h1><%= mapObj.title %></h1>
               <h3><%= mapObj.description %></h3>
