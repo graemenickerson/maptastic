@@ -15,7 +15,7 @@
     <label for="category">Select a Category: * </label>
       <% for (let category of map_icons) { %>
         <div>
-          <input type="radio" id="catRadio-<%= category.id %>" name="catRadio>" value="<%= category.id %>"required></input>
+          <input type="radio" id="catRadio-<%= category.id %>" name="catRadio" value="<%= category.id %>"required></input>
           <label for="catRadio-<%= category.id %>"><%= category.name %></label>
         </div>
       <% } %>
