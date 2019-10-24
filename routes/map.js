@@ -74,14 +74,35 @@ module.exports = (db) => {
   router.post("/:id/favourite", (req, res) => {
     const values = [req.session.userId, req.params.id];
     const sqlStatement = `
-    INSERT INTO users_favourites (user_id, map_id)
-    VALUES ($1, $2);
+    SELECT * FROM users_favourites
+    WHERE user_id = $1
+    AND map_id = $2;
     `;
     db.query(sqlStatement, values)
-      .then( data => {
-        res.redirect(`/map/${req.params.id}`);
-      })
-      .catch(err => console.log(err));
+      .then ( data => {
+        if (data.rows.length === 0) {
+          const sqlStatement = `
+          INSERT INTO users_favourites (user_id, map_id)
+          VALUES ($1, $2);
+          `;
+          db.query(sqlStatement, values)
+            .then( data => {
+              res.redirect(`/map/${req.params.id}`);
+            })
+            .catch(err => console.log(err));
+        } else {
+          const sqlStatement = `
+          DELETE FROM users_favourites
+          WHERE user_id = $1
+          AND map_id = $2;
+          `;
+          db.query(sqlStatement, values)
+            .then( data => {
+              res.redirect(`/map/${req.params.id}`);
+            })
+            .catch(err => console.log(err));
+        }
+    })
   });
 
 
