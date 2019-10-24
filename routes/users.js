@@ -20,19 +20,30 @@ module.exports = (db) => {
   });
 
   router.get("/:id", (req, res) => {
-    db.query(`
-    SELECT * FROM users
-    WHERE users.id = $1
-    `, [req.params.id])
-      .then(data => {
-        const templateVars = {
-          loggedInUser: req.session.userId,
-          userName: req.session.userName,
-          user: data.rows[0]
-        };
-        res.render("users", templateVars);
+    let id = parseInt(req.params.id);
+    if (Number.isInteger(id)) {
+      db.query(`
+      SELECT * FROM users
+      WHERE users.id = $1
+      `, [id])
+        .then(data => {
+          if (data.rows[0]) {
+            const templateVars = {
+              loggedInUser: req.session.userId,
+              userName: req.session.userName,
+              user: data.rows[0]
+            };
+
+            res.render("users", templateVars);
+
+          } else {
+            res.redirect('/error404');
+        }
       })
-      .catch(err => console.log(err));
+        .catch(err => console.log(err));
+    } else {
+      res.redirect('/error404');
+    }
   });
 
   router.get("/:id/maps", (req, res) => {

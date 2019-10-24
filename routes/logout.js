@@ -14,7 +14,8 @@ router.use(cookieSession({
 module.exports = () => {
   // Logs user out and deletes cookie from browser
   router.get("/", (req, res) => {
-    req.session = null;
+    req.session.userId = null;
+    req.session.userName = null;
     res.redirect('/');
   });
 
