@@ -15,7 +15,12 @@ module.exports = (db) => {
 
 //POST add a new point to specified map
   router.post("/:id/addpoint/add", (req,res) => {
-    const values = [req.session.userId, req.params.id, req.body.title, req.body.description, req.body.image, req.body.keywords, req.body.lati, req.body.longi]
+    let values;
+    if(!req.body.image) {
+      values = [req.session.userId, req.params.id, req.body.title, req.body.description, '/images/default.png', req.body.keywords, req.body.lati, req.body.longi]
+    } else {
+      values = [req.session.userId, req.params.id, req.body.title, req.body.description, req.body.image, req.body.keywords, req.body.lati, req.body.longi]
+    }
     const sqlStatment = `
       INSERT INTO points (user_id, map_id, title, description, picture, keyword_id, lat, long)
       VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
@@ -69,14 +74,35 @@ module.exports = (db) => {
   router.post("/:id/favourite", (req, res) => {
     const values = [req.session.userId, req.params.id];
     const sqlStatement = `
-    INSERT INTO users_favourites (user_id, map_id)
-    VALUES ($1, $2);
+    SELECT * FROM users_favourites
+    WHERE user_id = $1
+    AND map_id = $2;
     `;
     db.query(sqlStatement, values)
-      .then( data => {
-        res.redirect(`/map/${req.params.id}`);
-      })
-      .catch(err => console.log(err));
+      .then ( data => {
+        if (data.rows.length === 0) {
+          const sqlStatement = `
+          INSERT INTO users_favourites (user_id, map_id)
+          VALUES ($1, $2);
+          `;
+          db.query(sqlStatement, values)
+            .then( data => {
+              res.redirect(`/map/${req.params.id}`);
+            })
+            .catch(err => console.log(err));
+        } else {
+          const sqlStatement = `
+          DELETE FROM users_favourites
+          WHERE user_id = $1
+          AND map_id = $2;
+          `;
+          db.query(sqlStatement, values)
+            .then( data => {
+              res.redirect(`/map/${req.params.id}`);
+            })
+            .catch(err => console.log(err));
+        }
+    })
   });
 
 

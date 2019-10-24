@@ -14,7 +14,7 @@ VALUES
 ('Attraction', '/images/point_icons/attraction.png'),
 ('Kid Friendly', '/images/point_icons/baby.png'),
 ('Bakery', '/images/point_icons/bread.png'),
-('Toilets', '/images/point_icons/toilet.png'),
+('Toilets', '/images/point_icons/toilets.png'),
 ('Wheelchair Friendly Toilets', '/images/point_icons/toilets_disability.png'),
 ('Playground', '/images/point_icons/playground.png'),
 ('Treat', '/images/point_icons/muffin_bagel.png'),
