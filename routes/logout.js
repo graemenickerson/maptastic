@@ -18,6 +18,5 @@ module.exports = () => {
     req.session.userName = null;
     res.redirect('/');
   });
-
   return router;
 };

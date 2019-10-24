@@ -40,9 +40,7 @@ module.exports = (db) => {
     `;
     return db.query(sqlStatment, values)
       .then(res => res.rows[0])
-      .catch((err) => {
-        return null;
-      });
+      .catch((err) => console.log(err));
   };
 
   const getUserByEmail = function(user) {
@@ -55,9 +53,7 @@ module.exports = (db) => {
       .then(res => {
         return res.rows[0];
       })
-      .catch((err) => {
-        return null;
-      });
+      .catch((err) => console.log(err));
   };
 
   // Take new user info and stores it also assigns cookie
@@ -71,7 +67,7 @@ module.exports = (db) => {
             loggedInUser: req.session.userId,
             userName: req.session.userName,
             emailExists: true
-          }
+          };
           res.render('register', templateVars);
         } else {
           // email doesn't exist in db
@@ -90,6 +86,3 @@ module.exports = (db) => {
 
   return router;
 };
-
-
-

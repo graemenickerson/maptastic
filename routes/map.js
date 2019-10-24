@@ -13,13 +13,13 @@ module.exports = (db) => {
 //      POST REQUESTS
 //**************************
 
-//POST add a new point to specified map
+  //POST add a new point to specified map
   router.post("/:id/addpoint", (req,res) => {
     let values;
-    if(!req.body.image) {
-      values = [req.session.userId, req.params.id, req.body.title, req.body.description, '/images/default.png', req.body.keywords, req.body.lati, req.body.longi]
+    if (!req.body.image) {
+      values = [req.session.userId, req.params.id, req.body.title, req.body.description, '/images/default.png', req.body.keywords, req.body.lati, req.body.longi];
     } else {
-      values = [req.session.userId, req.params.id, req.body.title, req.body.description, req.body.image, req.body.keywords, req.body.lati, req.body.longi]
+      values = [req.session.userId, req.params.id, req.body.title, req.body.description, req.body.image, req.body.keywords, req.body.lati, req.body.longi];
     }
     const sqlStatment = `
       INSERT INTO points (user_id, map_id, title, description, picture, keyword_id, lat, long)
@@ -39,7 +39,7 @@ module.exports = (db) => {
 
   //POST add a new point to specified map
   router.post("/:id/editpoint", (req,res) => {
-    const values = [req.body.title, req.body.description, req.body.image, req.body.keywords, req.body.pointid]
+    const values = [req.body.title, req.body.description, req.body.image, req.body.keywords, req.body.pointid];
     const sqlStatment = `
       UPDATE points SET
       title = $1,
@@ -78,14 +78,14 @@ module.exports = (db) => {
     AND map_id = $2;
     `;
     db.query(sqlStatement, values)
-      .then ( data => {
+      .then(data => {
         if (data.rows.length === 0) {
           const sqlStatement = `
           INSERT INTO users_favourites (user_id, map_id)
           VALUES ($1, $2);
           `;
           db.query(sqlStatement, values)
-            .then( data => {
+            .then(data => {
               res.redirect(`/map/${req.params.id}`);
             })
             .catch(err => console.log(err));
@@ -96,20 +96,21 @@ module.exports = (db) => {
           AND map_id = $2;
           `;
           db.query(sqlStatement, values)
-            .then( data => {
+            .then(data => {
               res.redirect(`/map/${req.params.id}`);
             })
             .catch(err => console.log(err));
         }
-    })
+      });
   });
 
 
   //POST add new map to database
   router.post("/", (req,res) => {
-    lat = req.body.centerlat
-    long = req.body.centerlong
-    const values = [req.session.userId, req.body.catRadio, req.body.title, req.body.description, lat, long, req.body.zoom];
+    const lat = req.body.centerlat;
+    const long = req.body.centerlong;
+    const zoom =  req.body.zoom;
+    const values = [req.session.userId, req.body.catRadio, req.body.title, req.body.description, lat, long, zoom];
     const sqlStatment = `
       INSERT INTO maps (owner_id, icon_id, date_created, title, description, center_lat, center_long, zoom)
       VALUES ($1, $2, NOW(), $3, $4, $5, $6, $7)
@@ -129,7 +130,7 @@ module.exports = (db) => {
 
   // GET points from database, render map with points, show all keyword options on partial
   router.get("/:id/addpoint", (req, res) => {
-    const loggedInUser= req.session.userId;
+    const loggedInUser = req.session.userId;
     if (loggedInUser) {
       const pointsQuery = db.query(`
       SELECT points.*, maps.title, maps.center_lat, maps.center_long, maps.zoom FROM points
@@ -151,15 +152,15 @@ module.exports = (db) => {
             editPoint: 0
           };
           res.render("map", templateVars);
-      })
-      .catch(err => console.log(err));
+        })
+        .catch(err => console.log(err));
     } else {
       res.redirect(`/map/${req.params.id}`);
     }
   });
   // GET points from database, render map with points, show all keyword options on partial
   router.get("/:id/editpoint", (req, res) => {
-    const loggedInUser= req.session.userId;
+    const loggedInUser = req.session.userId;
     if (loggedInUser) {
       const pointsQuery = db.query(`
       SELECT points.*, maps.title, maps.id as map_id, maps.center_lat, maps.center_long, maps.zoom FROM points
@@ -181,8 +182,8 @@ module.exports = (db) => {
             editPoint: 1
           };
           res.render("map", templateVars);
-      })
-      .catch(err => console.log(err));
+        })
+        .catch(err => console.log(err));
     } else {
       res.redirect(`/map/${req.params.id}`);
     }
@@ -202,7 +203,7 @@ module.exports = (db) => {
       .catch(err => console.log(err));
   });
 
-    //GET map id, render map with all the associated info (favorites, map id)
+  //GET map id, render map with all the associated info (favorites, map id)
   router.get("/:id", (req, res) => {
     db.query(`
       SELECT maps.*, users.name, COUNT(users_favourites.*) as faved
@@ -212,7 +213,7 @@ module.exports = (db) => {
       GROUP BY maps.id, users.name;
     `, [req.params.id])
       .then(data => {
-        mapObj = data.rows[0]
+        const mapObj = data.rows[0];
         if (mapObj) {
           const templateVars = {
             loggedInUser: req.session.userId,
@@ -223,17 +224,17 @@ module.exports = (db) => {
           };
           res.render("map", templateVars);
         } else {
-          res.redirect('/')
+          res.redirect('/');
         }
       })
       .catch(err => {
         console.log(err);
-      })
+      });
   });
 
   //GET page to create a new map
   router.get("/", (req,res) => {
-    const loggedInUser= req.session.userId;
+    const loggedInUser = req.session.userId;
     if (loggedInUser) {
       db.query(`
         SELECT name, id

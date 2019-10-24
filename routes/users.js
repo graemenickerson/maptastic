@@ -38,8 +38,8 @@ module.exports = (db) => {
 
           } else {
             res.redirect('/error404');
-        }
-      })
+          }
+        })
         .catch(err => console.log(err));
     } else {
       res.redirect('/error404');

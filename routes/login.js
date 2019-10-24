@@ -23,9 +23,7 @@ module.exports = (db) => {
       .then(res => {
         return res.rows[0];
       })
-      .catch((err) => {
-        return null;
-      });
+      .catch((err) => console.log(err));
   };
 
   // Logs a user in after authentication.
