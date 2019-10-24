@@ -1,3 +1,5 @@
+<!-- users.ejs -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,12 +19,12 @@
     <% include ./partials/_nav %>
     <% if (user) { %>
       <h1><%= user.name %>'s Activity</h1>
-    <h3>Maps Created</h3>
-    <div class="made"></div>
-    <h3>Maps Contributed To</h3>
-    <div class="contributed"></div>
-    <h3>Favourite Maps</h3>
-    <div class="favourited"></div>
+      <h3>Maps Created</h3>
+      <div class="made"></div>
+      <h3>Maps Contributed To</h3>
+      <div class="contributed"></div>
+      <h3>Favourite Maps</h3>
+      <div class="favourited"></div>
     <% } %>
 
     <!-- Scripts -->
