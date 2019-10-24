@@ -30,19 +30,19 @@ $(() => {
       let markers = [];
       for (let point of points.points) {
         if (point.active) {
-          const point_icon = L.icon({
+          const pointIcon = L.icon({
             iconUrl: point.img_loc,
             iconSize:     [40, 45], // size of the icon
             iconAnchor:   [20, 45], // point of the icon which will correspond to marker's location
             popupAnchor:  [0, -45] // point from which the popup should open relative to the iconAnchor
           });
           //add the marker to the map with info from the database in the popup
-          L.marker([point.lat, point.long], {icon: point_icon}).addTo(map).bindPopup(`
+          L.marker([point.lat, point.long], {icon: pointIcon}).addTo(map).bindPopup(`
           <h1>${point.title}</h1>
           <h4>${point.description}</h4>
           <img src=${point.picture}  height="210" width="210"> <br>
           <i>created by: <a href="/users/${point.user_id}">${point.user_name}</a></i>
-          `).on("click", function(event) {
+          `).on("click", function() {
             //on click, if in edit mode, fill out the edit form with the values from that marker
             if (editMode) {
               document.getElementById('title').value = point.title;
@@ -59,7 +59,6 @@ $(() => {
           markers.push(markerL);
         }
       }
-
       /*
       if you're loading map from database
       */
@@ -78,7 +77,6 @@ $(() => {
         }
       }
     });
-
   //If you're creating a new map and you move the extent
   //update the hidden values in the form so that it is saved in the db
   } else {
