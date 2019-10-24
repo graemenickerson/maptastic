@@ -53,5 +53,6 @@ form.form-group {
 }
 
 #error-message {
-  visibility: hidden;
+  height: 60px;
+  color: $text-title;
 }

@@ -8,21 +8,29 @@ body {
   h1 {
     color: $text-title;
     padding: 10px;
+    font-size: 40px;
   }
   h3 {
     color: $text-title;
     padding: 10px;
+    font-size: 25px;
   }
+  #home {
+  color: $text-title;
+  padding: 40px
+  }
+
 }
 
 .made, .favourited, .contributed {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  overflow-x: auto;
+  flex-wrap: wrap;
 
   span {
     margin-left: 50px;
+    padding: 10px;
     background-image: url('../images/map.jpg');
     color: black;
     height: 200px;
@@ -37,14 +45,14 @@ body {
     border-width: 2px;
     border-style: solid;
     border-color: $border-color;
-
-
+    margin-bottom: 15px;
 
     a{
       text-align: center;
       text-decoration: none;
       color: $text-title;
       font-weight: bold;
+      font-size: 20px;
     }
     img {
       height: 110px;

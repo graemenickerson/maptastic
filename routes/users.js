@@ -20,19 +20,27 @@ module.exports = (db) => {
   });
 
   router.get("/:id", (req, res) => {
-    db.query(`
-    SELECT * FROM users
-    WHERE users.id = $1
-    `, [req.params.id])
-      .then(data => {
-        const templateVars = {
-          loggedInUser: req.session.userId,
-          userName: req.session.userName,
-          user: data.rows[0]
-        };
-        res.render("users", templateVars);
-      })
-      .catch(err => console.log(err));
+    let id = parseInt(req.params.id);
+    if (Number.isInteger(id)) {
+      db.query(`
+      SELECT * FROM users
+      WHERE users.id = $1
+      `, [id])
+        .then(data => {
+          const templateVars = {
+            loggedInUser: req.session.userId,
+            userName: req.session.userName,
+            user: data.rows[0]
+
+          };
+
+          res.render("users", templateVars);
+
+        })
+        .catch(err => console.log(err));
+    } else {
+      res.redirect('/');
+    }
   });
 
   router.get("/:id/maps", (req, res) => {

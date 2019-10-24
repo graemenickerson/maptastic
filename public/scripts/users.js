@@ -7,7 +7,6 @@ $(() => {
   let myURL = window.location.href.split("/");
   const myId = myURL[myURL.length - 1];
 
-  console.log(myId);
   if (myId) {
     $.ajax({
       method: "GET",

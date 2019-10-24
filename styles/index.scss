@@ -20,31 +20,33 @@ div.map-row {
 div.map-thumbnail {
   height: 300px;
   width: 300px;
+
   display: flex;
   flex-direction: column;
+  flex: 0 1 25%;
   justify-content: center;
   align-items: center;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 25px 0px;
-  flex: 0 1 25%;
   margin: 15px;
+  padding: 10px;
+
   border-radius: 25px;
   border-width: 2px;
   border-style: solid;
   border-color: $border-color;
+
   background: rgba(255, 255, 255, 0.4);
+  box-shadow: #00000033 0px 10px 25px 0px;
+
+  overflow-wrap: break-word;
+  word-break: break-word;
 
   h1 {
     text-align: center;
-
-    a{
-      text-decoration: none;
-      color: $text-title;
-    }
   }
 
   img {
-    height: 125px;
-    width: 125px;
+    height: 10vw;
+    width: 10vw;
   }
 
   .heart {
@@ -60,7 +62,6 @@ div.map-thumbnail {
     padding-top: 9px;
     position: absolute;
   }
+
 }
-
-
 

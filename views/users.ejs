@@ -2,9 +2,12 @@
 <html lang="en">
   <head>
     <title>Profile Page</title>
+    <!-- External Style -->
     <link href="https://fonts.googleapis.com/css?family=Abel|Cabin|Cabin+Condensed|Cabin+Sketch&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+
+    <!-- App CSS -->
     <link rel="stylesheet" href="/styles/nav.css"/>
     <link rel="stylesheet" href="/styles/users.css" type="text/css" />
 
@@ -12,20 +15,19 @@
 
   <body>
     <% include ./partials/_nav %>
-
     <% if (user) { %>
       <h1><%= user.name %>'s Activity</h1>
-    <% } else { %>
-      <h1>Username</h1>
-    <% } %>
-
     <h3>Maps Created</h3>
     <div class="made"></div>
     <h3>Maps Contributed To</h3>
     <div class="contributed"></div>
     <h3>Favourite Maps</h3>
     <div class="favourited"></div>
-
+    <% } else { %>
+      <h1>404: That user does not exist 😖</h1>
+      <a id='home' href='/'>back to home</a>
+    <% } %>
+    <!-- Scripts -->
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/userDropdown.js"></script>
     <script type="text/javascript" src="/scripts/users.js"></script>
