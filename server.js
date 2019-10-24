@@ -81,7 +81,7 @@ app.get("/", (req, res) => {
 });
 
 //The 404 Route (ALWAYS Keep this as the last route)
-app.get('*', function(req, res){
+app.get('*', function(req, res) {
   const templateVars = {};
   if (req.session.userId !== undefined) {
     templateVars.loggedInUser = req.session.userId;
@@ -92,7 +92,7 @@ app.get('*', function(req, res){
     templateVars.loggedInUser = req.session.userId;
     templateVars.userName = req.session.userName;
   }
-  res.render('error404', templateVars)
+  res.render('error404', templateVars);
 });
 
 app.listen(PORT, () => {
