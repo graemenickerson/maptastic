@@ -24,12 +24,14 @@
       </select>
   </div>
   <input type='hidden' id='pointid' name='pointid' value=''>
-  <div>
+  <div class="button">
     <button type="submit" class="btn btn-primary">Update Point</button>
   </div>
 </form>
 
 <form class="delete-point" action="/map/<%= mapObj.map_id %>/deletepoint" method="POST">
   <input type='hidden' id='deletepointid' name='deletepointid' value=''>
-  <button type="submit" id="delete">Delete Point</button>
+  <div class="button">
+    <button type="submit" id="delete">Delete Point</button>
+  </div>
 </form>
