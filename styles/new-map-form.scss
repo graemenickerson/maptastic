@@ -9,7 +9,7 @@
   h1 {
     align-content: center;
     color: $text-title;
-    font-family: 'Cabin', sans-serif;
+    font-family: $main-font;
   }
   .new-title {
     display: flex;
@@ -78,7 +78,7 @@
   button {
     background-color: $text-title;
     color: $text-primary;
-    font-family: 'Cabin', sans-serif;
+    font-family: $main-font;
     font-size: 15px;
     border-radius: 10px;
     height: 30px;

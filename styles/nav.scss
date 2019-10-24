@@ -16,7 +16,7 @@
   align-items: center;
   color: $text-primary;
   background-color: $primary-color;
-  font-family: 'Cabin', sans-serif;
+  font-family: $main-font;
   #brand {
     font-family: 'Cabin Sketch', sans-serif;
     font-size: 40px;
@@ -32,7 +32,7 @@
     color: $text-primary;
     height: 30px;
     font-size: 15px;
-    font-family: 'Cabin', sans-serif;
+    font-family: $main-font;
     &:hover {
       background-color: $secondary-color;
       border-radius: 10px;

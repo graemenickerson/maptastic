@@ -3,6 +3,7 @@
 @import "partials/_variables.scss";
 
 #map-view {
+  font-family: $main-font;
   h1 {
     margin: 5px;
     color: $text-title;
@@ -35,7 +36,6 @@
     button {
       background-color: $secondary-color;
       color: $text-primary;
-      font-family: 'Cabin', sans-serif;
       font-size: 15px;
       border-radius: 5px;
       height: 40px;

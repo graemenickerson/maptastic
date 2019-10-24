@@ -18,7 +18,7 @@ body {
     height: 100%;
     width: 25%;
     background-color: $background-color;
-    font-family: 'Cabin', sans-serif;
+    font-family: $main-font;
     display: flex;
     flex-direction: column;
   }
@@ -32,7 +32,7 @@ body {
 
 .leaflet-popup-content-wrapper {
   color: $text-title;
-  font-family: 'Cabin', sans-serif;
+  font-family: $main-font;
   h1, h4 {
     margin: 1px;
   }

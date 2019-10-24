@@ -6,7 +6,7 @@ body {
   margin: 0px;
   background-image: url('../images/worldbg.jpg');
   background-color: $background-color;
-  font-family: 'Cabin', sans-serif;
+  font-family: $main-font;
 }
 
 main {
