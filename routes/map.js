@@ -14,7 +14,7 @@ module.exports = (db) => {
 //**************************
 
 //POST add a new point to specified map
-  router.post("/:id/addpoint/add", (req,res) => {
+  router.post("/:id/addpoint", (req,res) => {
     let values;
     if(!req.body.image) {
       values = [req.session.userId, req.params.id, req.body.title, req.body.description, '/images/default.png', req.body.keywords, req.body.lati, req.body.longi]
@@ -56,8 +56,7 @@ module.exports = (db) => {
   });
 
   router.post("/:id/deletepoint", (req,res) => {
-    const values = [req.body.deletepointid]
-    console.log(values);
+    const values = [req.body.deletepointid];
     const sqlStatment = `
       UPDATE points SET
       active = false
@@ -232,7 +231,6 @@ module.exports = (db) => {
       })
   });
 
-
   //GET page to create a new map
   router.get("/", (req,res) => {
     const loggedInUser= req.session.userId;
@@ -257,7 +255,6 @@ module.exports = (db) => {
       res.redirect(`/`);
     }
   });
-
 
   return router;
 };
