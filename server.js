@@ -80,7 +80,22 @@ app.get("/", (req, res) => {
     .catch(err => console.log(err));
 });
 
+//The 404 Route (ALWAYS Keep this as the last route)
+app.get('*', function(req, res){
+  const templateVars = {};
+  if (req.session.userId !== undefined) {
+    templateVars.loggedInUser = req.session.userId;
+    templateVars.userName = req.session.userName;
+  } else {
+    req.session.userId = null;
+    req.session.userName = null;
+    templateVars.loggedInUser = req.session.userId;
+    templateVars.userName = req.session.userName;
+  }
+  res.render('error404', templateVars)
+});
 
 app.listen(PORT, () => {
   console.log(`wikiMap app listening on port ${PORT}`);
 });
+

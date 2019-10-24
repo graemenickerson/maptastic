@@ -1,0 +1,25 @@
+// index.scss
+
+@import "partials/_variables.scss";
+
+body {
+  background-image: url('../images/worldbg.jpg');
+  font-family: $main-font;
+
+  .error{
+    position: absolute;
+    margin-left: 33vw;
+    margin-top: 5vw;
+    border-radius: 25px;
+    border-width: 2px;
+    padding:20px;
+    border-style: solid;
+    border-color: $border-color;
+    background: rgba(255, 255, 255, 0.4);
+    box-shadow: #00000033 0px 10px 25px 0px;
+    text-align: center;
+    h1, #home {
+      color: $text-title;
+    }
+  }
+}

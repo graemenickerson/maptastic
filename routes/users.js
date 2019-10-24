@@ -27,19 +27,22 @@ module.exports = (db) => {
       WHERE users.id = $1
       `, [id])
         .then(data => {
-          const templateVars = {
-            loggedInUser: req.session.userId,
-            userName: req.session.userName,
-            user: data.rows[0]
+          if (data.rows[0]) {
+            const templateVars = {
+              loggedInUser: req.session.userId,
+              userName: req.session.userName,
+              user: data.rows[0]
+            };
 
-          };
+            res.render("users", templateVars);
 
-          res.render("users", templateVars);
-
-        })
+          } else {
+            res.redirect('/error404');
+        }
+      })
         .catch(err => console.log(err));
     } else {
-      res.redirect('/');
+      res.redirect('/error404');
     }
   });
 
