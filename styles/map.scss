@@ -33,23 +33,32 @@ body {
 .leaflet-popup-content-wrapper {
   color: $text-title;
   font-family: $main-font;
+  max-width: 250px;
+  overflow-wrap: break-word;
   h1 {
     margin: 1px;
     font-size: 25px;
+
   }
   h4 {
     margin: 1px;
     font-size: 15px;
+
   }
   img {
     padding: 3px;
   }
 
-  i, a{
+  i {
     margin: 1px;
     font-size: 15px;
     color: $text-title;
-    text-decoration: none;
+    a{
+      color: $text-title;
+      text-decoration: none;
+      text-decoration-line: underline;
+    }
   }
+
 }
 
