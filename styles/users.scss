@@ -16,10 +16,9 @@ body {
     font-size: 25px;
   }
   #home {
-  color: $text-title;
-  padding: 40px
+    color: $text-title;
+    padding: 40px
   }
-
 }
 
 .made, .favourited, .contributed {
@@ -32,7 +31,6 @@ body {
     margin-left: 50px;
     padding: 10px;
     background-image: url('../images/map.jpg');
-    color: black;
     height: 200px;
     width: 200px;
     background-size: 200px 200px;
@@ -62,11 +60,7 @@ body {
     img {
       height: 110px;
       width: 110px;
-
       justify-items: center;
-      }
-
+    }
   }
-
-
 }

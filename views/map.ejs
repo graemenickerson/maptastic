@@ -1,3 +1,5 @@
+<!-- map.ejs -->
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -5,6 +7,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <!-- External Style -->
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
@@ -28,6 +31,7 @@
     crossorigin=""></script>
 
   </head>
+
   <body>
     <% include ./partials/_nav %>
     <main>
@@ -52,14 +56,14 @@
       </div>
     </main>
 
-  <!-- Scripts  -->
-  <script id="map-script" src='/scripts/map_leaflet.js'></script>
-  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/scripts/app.js"></script>
-  <script type="text/javascript" src="/scripts/userDropdown.js"></script>
+    <!-- Scripts  -->
+    <script id="map-script" src='/scripts/map_leaflet.js'></script>
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/userDropdown.js"></script>
 
-  <% if(addPoint) { %>
-    <script type="text/javascript" src="/scripts/add_point.js"></script>
-  <% } %>
+    <% if(addPoint) { %>
+      <script type="text/javascript" src="/scripts/add_point.js"></script>
+    <% } %>
   </body>
 </html>
