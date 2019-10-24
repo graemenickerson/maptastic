@@ -1,43 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>MAPPIN - Register</title>
+    <title>MAPTASTIC - Register</title>
+    <!-- External Style -->
     <link href="https://fonts.googleapis.com/css?family=Abel|Cabin|Cabin+Condensed|Cabin+Sketch&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+
+    <!-- App CSS -->
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/register.css">
   </head>
   <body>
     <% include ./partials/_nav %>
-  <main>
-    <div id="error-message">
-      <h3>Invalid Input Information. Please Try Again.</h3>
-    </div>
-    <form class="form-group" action="/register" method="POST">
-      <h3>Create Account</h3>
-      <div class="form-group">
-        <label for="name">Name *</label>
-        <div>
-          <input class="form-control" type="name" name="name" placeholder="Name" minlength="1" maxlength="254" required>
+    <main>
+      <div id="error-message">
+        <h3>Invalid Input Information. Please Try Again.</h3>
+      </div>
+      <form class="form-group" action="/register" method="POST">
+        <h3>Create Account</h3>
+        <div class="form-group">
+          <label for="name">Name *</label>
+          <div>
+            <input class="form-control" type="name" name="name" placeholder="Name" minlength="1" maxlength="254" required>
+          </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label for="email">Email address *</label>
-        <div>
-          <input class="form-control" type="email" name="email" placeholder="email@address.com"minlength="1" maxlength="254" required>
+        <div class="form-group">
+          <label for="email">Email address *</label>
+          <div>
+            <input class="form-control" type="email" name="email" placeholder="email@address.com"minlength="1" maxlength="254" required>
+          </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label for="password">Password *</label>
-        <div>
-          <input class="form-control" type="password" name="password" placeholder="password" minlength="1" maxlength="254" required>
+        <div class="form-group">
+          <label for="password">Password *</label>
+          <div>
+            <input class="form-control" type="password" name="password" placeholder="password" minlength="1" maxlength="254" required>
+          </div>
         </div>
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Register</button>
-      </div>
-    </form>
-  </main>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Register</button>
+        </div>
+      </form>
+    </main>
   </body>
 </html>
