@@ -75,8 +75,8 @@ $(() => {
         let zoom = map.getZoom();
         if (zoom > 14) {
           map.setZoom(14);
+        }
       }
-    }
     });
 
   //If you're creating a new map and you move the extent

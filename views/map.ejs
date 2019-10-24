@@ -1,17 +1,20 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>MAPPIN</title>
+    <title>MAPTASTIC</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- External Style -->
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Abel|Cabin|Cabin+Condensed|Cabin+Sketch&display=swap" rel="stylesheet">
+
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
     crossorigin=""/>
+
     <!-- App CSS -->
     <link rel="stylesheet" href="/styles/map.css">
     <link rel="stylesheet" href="/styles/nav.css"/>
@@ -31,9 +34,9 @@
       <div class="main-map">
         <div class="sidebar">
           <% if (mapObj) { %>
-              <input type='hidden' id='maplat'  name='maplat' value=<%= mapObj.center_lat %>>
-              <input type='hidden' id='maplong'  name='maplong' value=<%= mapObj.center_long %>>
-              <input type='hidden' id='mapzoom'  name='mapzoom' value=<%= mapObj.zoom %>>
+            <input type='hidden' id='maplat'  name='maplat' value=<%= mapObj.center_lat %>>
+            <input type='hidden' id='maplong'  name='maplong' value=<%= mapObj.center_long %>>
+            <input type='hidden' id='mapzoom'  name='mapzoom' value=<%= mapObj.zoom %>>
             <% if (addPoint) { %>
               <% include ./partials/_newPoint %>
             <% } else if (editPoint) { %>
@@ -45,17 +48,18 @@
             <% include ./partials/_newMap %>
           <% } %>
         </div>
-        <div id="mapid">
-        </div>
+        <div id="mapid"></div>
       </div>
     </main>
+
+  <!-- Scripts  -->
   <script id="map-script" src='/scripts/map_leaflet.js'></script>
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/userDropdown.js"></script>
 
   <% if(addPoint) { %>
     <script type="text/javascript" src="/scripts/add_point.js"></script>
   <% } %>
-  <script type="text/javascript" src="/scripts/userDropdown.js"></script>
   </body>
 </html>
