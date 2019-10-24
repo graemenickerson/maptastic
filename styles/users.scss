@@ -15,13 +15,12 @@ body {
     padding: 10px;
     font-size: 25px;
   }
-
-  a {
-    color: $text-title;
-    padding: 40px
+  #home {
+  color: $text-title;
+  padding: 40px
   }
-}
 
+}
 
 .made, .favourited, .contributed {
   display: flex;
@@ -47,9 +46,6 @@ body {
     border-style: solid;
     border-color: $border-color;
     margin-bottom: 15px;
-
-
-
 
     a{
       text-align: center;
