@@ -11,27 +11,28 @@ A user who is logged in to Maptastic is able to create new maps, edit and popula
 
 A user who is not logged in is able to see all of the maps that have been created and navigate and view every map. They are not able to edit, add or delete points. Nor are they able to favourite maps.
 
+Each point has a title, image and description as well as a creator id.
 
-
+---
 ## Screen Shots
 
-- homepage 
-- map with lots of points
-- map with point poopup
-- user profile page 
-- add point form create map
-- register
 
+Home Page
+![Main Home Page](./screenshots/home.png)
+Register
+![Main Home Page](./screenshots/register.png)
+Create New Map
+![Main Home Page](./screenshots/create-new.png)
+Map View
+![Main Home Page](./screenshots/map-view.png)
+New Point
+![Main Home Page](./screenshots/new-point.png)
+Point Details
+![Main Home Page](./screenshots/point-view.png)
+User Page
+![Main Home Page](./screenshots/user-page.png)
 
-## Project Setup
-
-1. Create your own copy of this repo using the `Use This Template` button, ideally using the name of your project. The repo should be marked Public
-2. Verify that the skeleton code now shows up in your repo on GitHub, you should be automatically redirected
-3. Clone your copy of the repo to your dev machine
-4. Add your team members as collaborators to the project so that they can push to this repo
-5. Let your team members know the repo URL so that they use the same repo (they should _not_ create a copy/fork of this repo since that will add additional workflow complexity to the project)
-
-
+---
 ## Getting Started
 
 1. Create the `.env` by using `.env.example` as a reference: `cp .env.example .env`
@@ -46,12 +47,14 @@ A user who is not logged in is able to see all of the maps that have been create
   - Note: nodemon is used, so you should not have to restart your server
 6. Visit `http://localhost:8080/`
 
-## Warnings & Tips
+---
+## Tips
 
 - Use the `npm run db:reset` command each time there is a change to the database schema or seeds. 
   - It runs through each of the files, in order, and executes them against the database. 
   - Note: you will lose all newly created (test) data each time this is run, since the schema files will tend to `DROP` the tables and recreate them.
 
+---
 ## Dependencies
 
 - Node 10.x or above
