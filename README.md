@@ -40,12 +40,11 @@ A user who is not logged in is able to see all of the maps that have been create
   - password: `labber` 
   - database: `midterm`
 3. Install dependencies: `npm i`
-4. Fix to binaries for sass: `npm rebuild node-sass`
-5. Reset database: `npm run db:reset`
+4. Reset database: `npm run db:reset`
   - Check the db folder to see what gets created and seeded in the SDB
-7. Run the server: `npm run local`
+5. Run the server: `npm run local`
   - Note: nodemon is used, so you should not have to restart your server
-8. Visit `http://localhost:8080/`
+6. Visit `http://localhost:8080/`
 
 ## Warnings & Tips
 
@@ -57,14 +56,15 @@ A user who is not logged in is able to see all of the maps that have been create
 
 - Node 10.x or above
 - NPM 5.x or above
-- PG 6.x
-- Bcrypt 3.x
-- body-parser 1.x
-- chalk 2.x
-- cookie-session 1.x
-- dotenv 2.x
-- ejs 2.x
-- express 4.x
-- morgan 1.x
-- node-sass-middleware 0.11.x
-- pg-native 3.x
+- PG 6.x or above
+- Bcrypt 3.x or above
+- Body-parser 1.x or above
+- Chalk 2.x or above
+- Cookie-session 1.x or above
+- Dotenv 2.x or above
+- ejs 2.x or above
+- Express 4.x or above
+- Morgan 1.x or above
+- Node-sass-middleware 0.11.x or above
+- pg-native 3.x or above
+- Nodemon 1.19.x or above
