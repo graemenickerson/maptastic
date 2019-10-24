@@ -1,4 +1,4 @@
-# MAPTASTIC
+![Main Home Page](./screenshots/title.png)
 
 ## Description
 
@@ -36,10 +36,7 @@ User Page
 ## Getting Started
 
 1. Create the `.env` by using `.env.example` as a reference: `cp .env.example .env`
-2. Update the .env file with your correct local information 
-  - username: `labber` 
-  - password: `labber` 
-  - database: `midterm`
+2. Update the .env file with your correct local information
 3. Install dependencies: `npm i`
 4. Reset database: `npm run db:reset`
   - Check the db folder to see what gets created and seeded in the SDB
