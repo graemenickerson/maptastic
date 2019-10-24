@@ -53,6 +53,11 @@ body {
       color: $text-title;
       font-weight: bold;
       font-size: 20px;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      min-height: 40px;
     }
     img {
       height: 110px;
