@@ -20,7 +20,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  overflow-x: auto;
+  flex-wrap: wrap;
 
   span {
     margin-left: 50px;
@@ -39,6 +39,8 @@ body {
     border-width: 2px;
     border-style: solid;
     border-color: $border-color;
+    margin-bottom: 15px;
+
 
 
 
