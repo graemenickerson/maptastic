@@ -1,7 +1,7 @@
 {
   "name": "node-skeleton",
   "version": "1.0.0",
-  "description": "",
+  "description": "A web app that allows users to collaboratively create maps which list multiple 'points'. For example: 'Best Places to Eat Around Town' or 'Locations of Movie Scenes.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,7 +9,11 @@
     "local": "./node_modules/.bin/nodemon -L --ignore public/",
     "db:reset": "node bin/resetdb.js"
   },
-  "author": "Lighthouse Labs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/graemenickerson/wikiMap"
+  },
+  "author": "Caitlin Ing, Emily Hillier, Graeme Nickerson",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^3.0.6",
