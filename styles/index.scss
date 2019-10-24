@@ -33,14 +33,21 @@ div.map-thumbnail {
   border-color: $border-color;
   background: rgba(255, 255, 255, 0.4);
 
+
+
   h1 {
     text-align: center;
 
-    a{
+    a {
       text-decoration: none;
       color: $text-title;
+      display: block;
+      height: 100%;
+      width: 100%;
+      text-decoration: none;
     }
   }
+
 
   img {
     height: 125px;
@@ -60,7 +67,6 @@ div.map-thumbnail {
     padding-top: 9px;
     position: absolute;
   }
+
 }
-
-
 
