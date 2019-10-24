@@ -13,6 +13,10 @@ body {
     color: $text-title;
     padding: 10px;
   }
+  a {
+    color: $text-title;
+    padding: 40px
+  }
 }
 
 .made, .favourited, .contributed {
