@@ -33,8 +33,13 @@ body {
 .leaflet-popup-content-wrapper {
   color: $text-title;
   font-family: $main-font;
-  h1, h4 {
+  h1 {
     margin: 1px;
+    font-size: 25px;
+  }
+  h4 {
+    margin: 1px;
+    font-size: 15px;
   }
   img {
     padding: 3px;

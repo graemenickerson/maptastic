@@ -8,11 +8,12 @@ body {
   h1 {
     color: $text-title;
     padding: 10px;
+    font-size: 40px;
   }
   h3 {
     color: $text-title;
     padding: 10px;
-  }
+    font-size: 25px;  }
 }
 
 .made, .favourited, .contributed {
@@ -23,6 +24,7 @@ body {
 
   span {
     margin-left: 50px;
+    padding: 10px;
     background-image: url('../images/map.jpg');
     color: black;
     height: 200px;
@@ -45,6 +47,7 @@ body {
       text-decoration: none;
       color: $text-title;
       font-weight: bold;
+      font-size: 20px;
     }
     img {
       height: 110px;
