@@ -56,7 +56,7 @@ app.use('/logout', logoutRoutes());
 // Home page
 app.get("/", (req, res) => {
   const templateVars = {};
-  if (req.session !== undefined) {
+  if (req.session.userId !== undefined) {
     templateVars.loggedInUser = req.session.userId;
     templateVars.userName = req.session.userName;
   } else {
