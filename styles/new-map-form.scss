@@ -13,13 +13,16 @@
   }
   .new-title {
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
+    justify-content: center;
     color: $text-title;
     margin: 3px;
+    width: 100%;
     label {
       margin-right: 3px;
     }
     input {
+      margin-right: 3px;
       border: transparent;
       border-radius: 5px;
       &:focus {
@@ -29,13 +32,16 @@
   }
   .new-description {
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
+    justify-content: center;
     color: $text-title;
     margin: 3px;
     margin-top: 10px;
+    width: 100%;
     textarea {
       border: transparent;
       border-radius: 5px;
+      margin-right: 3px;
       &:focus {
         outline: none;
       }
@@ -75,19 +81,22 @@
       }
     }
   }
-  button {
-    background-color: $text-title;
-    color: $text-primary;
-    font-family: $main-font;
-    font-size: 15px;
-    border-radius: 10px;
-    height: 30px;
-    width: 60px;
-    margin: 10px;
-    margin-left: 80%;
-    padding: 5px;
-    &:hover {
-      background-color: $primary-color;
+  .button {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 10px;
+    button {
+      background-color: $text-title;
+      color: $text-primary;
+      font-family: $main-font;
+      font-size: 15px;
+      border-radius: 10px;
+      height: 30px;
+      width: 60px;
+      padding: 5px;
+      &:hover {
+        background-color: $primary-color;
+      }
     }
   }
   label {
