@@ -15,7 +15,12 @@ module.exports = (db) => {
 
 //POST add a new point to specified map
   router.post("/:id/addpoint/add", (req,res) => {
-    const values = [req.session.userId, req.params.id, req.body.title, req.body.description, req.body.image, req.body.keywords, req.body.lati, req.body.longi]
+    let values;
+    if(!req.body.image) {
+      values = [req.session.userId, req.params.id, req.body.title, req.body.description, '/images/default.png', req.body.keywords, req.body.lati, req.body.longi]
+    } else {
+      values = [req.session.userId, req.params.id, req.body.title, req.body.description, req.body.image, req.body.keywords, req.body.lati, req.body.longi]
+    }
     const sqlStatment = `
       INSERT INTO points (user_id, map_id, title, description, picture, keyword_id, lat, long)
       VALUES ($1, $2, $3, $4, $5, $6, $7, $8)

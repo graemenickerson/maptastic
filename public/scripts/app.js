@@ -41,7 +41,7 @@ $(() => {
           <h1>${point.title}</h1>
           <h4>${point.description}</h4>
           <img src=${point.picture}  width="150" height="150"> <br>
-          <i>created by: ${point.user_name}</i>
+          <i><a href="/users/${point.user_id}">created by: ${point.user_name}</a></i>
           `).on("click", function(event) {
             //on click, if in edit mode, fill out the edit form with the values from that marker
             if (editMode) {

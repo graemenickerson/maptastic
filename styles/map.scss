@@ -44,5 +44,12 @@ body {
   img {
     padding: 3px;
   }
+
+  i, a{
+    margin: 1px;
+    font-size: 15px;
+    color: $text-title;
+    text-decoration: none;
+  }
 }
 
