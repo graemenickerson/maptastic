@@ -15,7 +15,9 @@
     <% include ./partials/_nav %>
     <main>
       <div id="error-message">
-        <h3>Invalid Input Information. Please Try Again.</h3>
+          <% if (emailExists) {%>
+          <h3>Invalid Input Information. Please Try Again.</h3>
+          <%} %>
       </div>
       <form class="form-group" action="/register" method="POST">
         <h3>Create Account</h3>

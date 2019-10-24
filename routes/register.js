@@ -17,16 +17,17 @@ module.exports = (db) => {
 
   // Shows page for creating new user
   router.get("/", (req,res) => {
-    if (!req.session === undefined) {
+    if (req.session.userId === null) {
+      // user not logged in
       const templateVars =  {
         loggedInUser: req.session.userId,
-        userName: req.session.userName
+        userName: req.session.userName,
+        emailExists: false
       };
       res.render("register", templateVars);
     } else {
-      req.session.userId = null;
-      const templateVars =  { loggedInUser: req.session.userId };
-      res.render("register", templateVars);
+      // user already logged in
+      res.redirect("/");
     }
   });
 
@@ -65,8 +66,15 @@ module.exports = (db) => {
     getUserByEmail(user)
       .then(exists => {
         if (exists) {
-          res.redirect('register');
+          // email already exists in db
+          const templateVars = {
+            loggedInUser: req.session.userId,
+            userName: req.session.userName,
+            emailExists: true
+          }
+          res.render('register', templateVars);
         } else {
+          // email doesn't exist in db
           user.password = bcrypt.hashSync(user.password, 10);
           addUser(user)
             .then(user => {
