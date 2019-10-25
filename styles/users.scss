@@ -8,12 +8,16 @@ body {
   h1 {
     color: $text-title;
     padding: 10px;
-    font-size: 40px;
+    font-size: 30px;
+    margin: 5px;
   }
   h3 {
     color: $text-title;
     padding: 10px;
-    font-size: 25px;
+    font-size: 24px;
+    margin: 5px;
+    border-top: 1px solid $text-title;
+
   }
   #home {
     color: $text-title;
