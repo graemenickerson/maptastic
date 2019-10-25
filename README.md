@@ -1,4 +1,4 @@
-![Main Home Page](./screenshots/title.png)
+![Main Home Page](./screenshots/Title.png)
 
 ## Description
 
